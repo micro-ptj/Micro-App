@@ -1,0 +1,19 @@
+
+.login.data-v-23b3be22{
+		margin-top: 200rpx;
+}
+.login-header.data-v-23b3be22{
+		margin-top: 100rpx;
+		display: table;
+		margin: 0 auto;
+}
+.login-icon.data-v-23b3be22{
+		display: inline-block;
+		margin-right: 10rpx;
+		vertical-align:middle;
+}
+.login-title.data-v-23b3be22 {
+		display: inline-block;
+		font-size: 30rpx;
+		vertical-align:middle;
+}

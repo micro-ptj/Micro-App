@@ -1,0 +1,88 @@
+.u-wrap[data-v-65385da6] {
+  background-color: #eee;
+  overflow: hidden;
+}
+.u-lazy-item[data-v-65385da6] {
+  width: 100%;
+  transform: transition3d(0, 0, 0);
+  will-change: transform;
+  display: block;
+}
+.u-waterfall[data-v-349a3de8] {
+
+  display: flex;
+  flex-direction: row;
+
+  flex-direction: row;
+  align-items: flex-start;
+}
+.u-column[data-v-349a3de8] {
+
+  display: flex;
+  flex-direction: row;
+
+  flex: 1;
+  flex-direction: column;
+  height: auto;
+}
+.u-image[data-v-349a3de8] {
+  width: 100%;
+}
+
+	/* page不能写带scope的style标签中，否则无效 */
+body {
+		background-color: rgb(240, 240, 240);
+}
+
+.demo-warter[data-v-8f03510a] {
+  border-radius: 8px;
+  margin: 5px;
+  background-color: #ffffff;
+  padding: 8px;
+  position: relative;
+}
+.u-close[data-v-8f03510a] {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.demo-image[data-v-8f03510a] {
+  width: 100%;
+  border-radius: 4px;
+}
+.demo-title[data-v-8f03510a] {
+  font-size: 0.9375rem;
+  margin-top: 5px;
+  color: #303133;
+  font-weight: 700;
+}
+.demo-tag[data-v-8f03510a] {
+  display: flex;
+  margin-top: 5px;
+}
+.demo-tag-text[data-v-8f03510a] {
+  color: #d13a1b;
+  margin-right: 10px;
+  line-height: 1;
+  padding: 0.0625rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.3125rem;
+}
+.demo-price[data-v-8f03510a] {
+  display: flex;
+  margin-top: 5px;
+}
+.demo-price-a[data-v-8f03510a] {
+  font-size: 0.625rem;
+  color: #fa3534;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+.demo-price-b[data-v-8f03510a] {
+  font-size: 0.3125rem;
+  display: flex;
+  align-items: center;
+  color: #cccccc;
+}

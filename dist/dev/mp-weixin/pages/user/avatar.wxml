@@ -1,0 +1,1 @@
+<view class="wrap data-v-5189426e"><view class="u-avatar-wrap data-v-5189426e"><image class="u-avatar-demo data-v-5189426e" src="{{a}}" mode="aspectFill"></image></view><u-button class="data-v-5189426e" u-s="{{['d']}}" bindtap="{{b}}" u-i="5189426e-0" bind:__l="__l">选择头像</u-button></view>

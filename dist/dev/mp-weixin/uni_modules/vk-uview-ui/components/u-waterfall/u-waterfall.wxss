@@ -1,0 +1,20 @@
+.u-waterfall.data-v-349a3de8 {
+
+  display: flex;
+  flex-direction: row;
+
+  flex-direction: row;
+  align-items: flex-start;
+}
+.u-column.data-v-349a3de8 {
+
+  display: flex;
+  flex-direction: row;
+
+  flex: 1;
+  flex-direction: column;
+  height: auto;
+}
+.u-image.data-v-349a3de8 {
+  width: 100%;
+}

@@ -1,0 +1,15 @@
+.u-mask.data-v-22d50354 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: transform 0.3s;
+}
+.u-mask-show.data-v-22d50354 {
+  opacity: 1;
+}
+.u-mask-zoom.data-v-22d50354 {
+  transform: scale(1.2, 1.2);
+}
