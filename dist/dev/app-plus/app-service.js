@@ -279,195 +279,7 @@ if (uni.restoreGlobal) {
       }, vue.toDisplayString($props.label), 5)) : vue.createCommentVNode("v-if", true)
     ], 6);
   }
-  var __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$l], ["__scopeId", "data-v-6b8ae5b6"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-icon/u-icon.vue"]]);
-  const _sfc_main$s = {
-    name: "u-image",
-    emits: ["click", "error", "load"],
-    props: {
-      src: {
-        type: String,
-        default: ""
-      },
-      mode: {
-        type: String,
-        default: "aspectFill"
-      },
-      width: {
-        type: [String, Number],
-        default: "100%"
-      },
-      height: {
-        type: [String, Number],
-        default: "auto"
-      },
-      shape: {
-        type: String,
-        default: "square"
-      },
-      borderRadius: {
-        type: [String, Number],
-        default: 0
-      },
-      lazyLoad: {
-        type: Boolean,
-        default: true
-      },
-      showMenuByLongpress: {
-        type: Boolean,
-        default: true
-      },
-      loadingIcon: {
-        type: String,
-        default: "photo"
-      },
-      errorIcon: {
-        type: String,
-        default: "error-circle"
-      },
-      showLoading: {
-        type: Boolean,
-        default: true
-      },
-      showError: {
-        type: Boolean,
-        default: true
-      },
-      fade: {
-        type: Boolean,
-        default: true
-      },
-      webp: {
-        type: Boolean,
-        default: false
-      },
-      duration: {
-        type: [String, Number],
-        default: 500
-      },
-      bgColor: {
-        type: String,
-        default: "#f3f4f6"
-      }
-    },
-    data() {
-      return {
-        isError: false,
-        loading: true,
-        opacity: 1,
-        durationTime: this.duration,
-        backgroundStyle: {}
-      };
-    },
-    watch: {
-      src: {
-        immediate: true,
-        handler(n) {
-          if (!n) {
-            this.isError = true;
-            this.loading = false;
-          } else {
-            this.isError = false;
-          }
-        }
-      }
-    },
-    computed: {
-      wrapStyle() {
-        let style = {};
-        style.width = this.$u.addUnit(this.width);
-        style.height = this.$u.addUnit(this.height);
-        style.borderRadius = this.shape == "circle" ? "50%" : this.$u.addUnit(this.borderRadius);
-        style.overflow = this.borderRadius > 0 ? "hidden" : "visible";
-        if (this.fade) {
-          style.opacity = this.opacity;
-          style.transition = `opacity ${Number(this.durationTime) / 1e3}s ease-in-out`;
-        }
-        return style;
-      }
-    },
-    methods: {
-      onClick() {
-        this.$emit("click");
-      },
-      onErrorHandler(err) {
-        this.loading = false;
-        this.isError = true;
-        this.$emit("error", err);
-      },
-      onLoadHandler() {
-        this.loading = false;
-        this.isError = false;
-        this.$emit("load");
-        if (!this.fade)
-          return this.removeBgColor();
-        this.opacity = 0;
-        this.durationTime = 0;
-        setTimeout(() => {
-          this.durationTime = this.duration;
-          this.opacity = 1;
-          setTimeout(() => {
-            this.removeBgColor();
-          }, this.durationTime);
-        }, 50);
-      },
-      removeBgColor() {
-        this.backgroundStyle = {
-          backgroundColor: "transparent"
-        };
-      }
-    }
-  };
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-    return vue.openBlock(), vue.createElementBlock("view", {
-      class: "u-image",
-      onClick: _cache[2] || (_cache[2] = (...args) => $options.onClick && $options.onClick(...args)),
-      style: vue.normalizeStyle([$options.wrapStyle, $data.backgroundStyle])
-    }, [
-      !$data.isError ? (vue.openBlock(), vue.createElementBlock("image", {
-        key: 0,
-        src: $props.src,
-        mode: $props.mode,
-        onError: _cache[0] || (_cache[0] = (...args) => $options.onErrorHandler && $options.onErrorHandler(...args)),
-        onLoad: _cache[1] || (_cache[1] = (...args) => $options.onLoadHandler && $options.onLoadHandler(...args)),
-        "lazy-load": $props.lazyLoad,
-        class: "u-image__image",
-        style: vue.normalizeStyle({
-          borderRadius: $props.shape == "circle" ? "50%" : _ctx.$u.addUnit($props.borderRadius)
-        })
-      }, null, 44, ["src", "mode", "lazy-load"])) : vue.createCommentVNode("v-if", true),
-      $props.showLoading && $data.loading ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 1,
-        class: "u-image__loading",
-        style: vue.normalizeStyle({
-          borderRadius: $props.shape == "circle" ? "50%" : _ctx.$u.addUnit($props.borderRadius),
-          backgroundColor: $props.bgColor
-        })
-      }, [
-        _ctx.$slots.loading ? vue.renderSlot(_ctx.$slots, "loading", { key: 0 }, void 0, true) : (vue.openBlock(), vue.createBlock(_component_u_icon, {
-          key: 1,
-          name: $props.loadingIcon,
-          width: $props.width,
-          height: $props.height
-        }, null, 8, ["name", "width", "height"]))
-      ], 4)) : vue.createCommentVNode("v-if", true),
-      $props.showError && $data.isError && !$data.loading ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 2,
-        class: "u-image__error",
-        style: vue.normalizeStyle({
-          borderRadius: $props.shape == "circle" ? "50%" : _ctx.$u.addUnit($props.borderRadius)
-        })
-      }, [
-        _ctx.$slots.error ? vue.renderSlot(_ctx.$slots, "error", { key: 0 }, void 0, true) : (vue.openBlock(), vue.createBlock(_component_u_icon, {
-          key: 1,
-          name: $props.errorIcon,
-          width: $props.width,
-          height: $props.height
-        }, null, 8, ["name", "width", "height"]))
-      ], 4)) : vue.createCommentVNode("v-if", true)
-    ], 4);
-  }
-  var __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$k], ["__scopeId", "data-v-c8daf7c4"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-image/u-image.vue"]]);
+  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$l], ["__scopeId", "data-v-6b8ae5b6"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-icon/u-icon.vue"]]);
   function broadcast(componentName, eventName, params) {
   }
   var Emitter = {
@@ -490,7 +302,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  const _sfc_main$r = {
+  const _sfc_main$s = {
     name: "u-input",
     emits: ["update:modelValue", "input", "change", "blur", "focus", "click", "touchstart"],
     mixins: [Emitter],
@@ -709,8 +521,8 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$4);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["u-input", {
         "u-input--border": $props.border,
@@ -802,7 +614,7 @@ if (uni.restoreGlobal) {
       ])
     ], 6);
   }
-  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$j], ["__scopeId", "data-v-a2383a08"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-input/u-input.vue"]]);
+  var __easycom_3$1 = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$k], ["__scopeId", "data-v-a2383a08"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-input/u-input.vue"]]);
   function _extends() {
     _extends = Object.assign || function(target) {
       for (var i = 1; i < arguments.length; i++) {
@@ -1721,7 +1533,7 @@ if (uni.restoreGlobal) {
   Schema.messages = messages;
   Schema.warning = function() {
   };
-  const _sfc_main$q = {
+  const _sfc_main$r = {
     name: "u-form-item",
     mixins: [Emitter],
     inject: {
@@ -1968,8 +1780,8 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$4);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["u-form-item", { "u-border-bottom": $options.elBorderBottom, "u-form-item__border-bottom--error": $data.validateState === "error" && $options.showError("border-bottom") }])
     }, [
@@ -2047,8 +1859,8 @@ if (uni.restoreGlobal) {
       }, vue.toDisplayString($data.validateMessage), 5)) : vue.createCommentVNode("v-if", true)
     ], 2);
   }
-  var __easycom_1$4 = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$i], ["__scopeId", "data-v-3c456ae0"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-form-item/u-form-item.vue"]]);
-  const _sfc_main$p = {
+  var __easycom_4$1 = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$j], ["__scopeId", "data-v-3c456ae0"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-form-item/u-form-item.vue"]]);
+  const _sfc_main$q = {
     name: "u-form",
     props: {
       model: {
@@ -2143,13 +1955,13 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "u-form" }, [
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ]);
   }
-  var __easycom_7 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$h], ["__scopeId", "data-v-006d3b56"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-form/u-form.vue"]]);
-  const _sfc_main$o = {
+  var __easycom_5$1 = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$i], ["__scopeId", "data-v-006d3b56"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-form/u-form.vue"]]);
+  const _sfc_main$p = {
     name: "u-button",
     emits: ["click", "getphonenumber", "getuserinfo", "error", "opensetting", "launchapp"],
     props: {
@@ -2349,7 +2161,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("button", {
       id: "u-wave-btn",
       class: vue.normalizeClass(["u-btn u-line-1 u-fix-ios-appearance", [
@@ -2401,33 +2213,27 @@ if (uni.restoreGlobal) {
       }, null, 6)) : vue.createCommentVNode("v-if", true)
     ], 46, ["hover-start-time", "hover-stay-time", "disabled", "form-type", "open-type", "app-parameter", "hover-stop-propagation", "send-message-title", "lang", "data-name", "session-from", "send-message-img", "show-message-card", "hover-class", "loading"]);
   }
-  var __easycom_1$3 = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$g], ["__scopeId", "data-v-00138ed6"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-button/u-button.vue"]]);
+  var __easycom_2$1 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$h], ["__scopeId", "data-v-00138ed6"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-button/u-button.vue"]]);
   const config$1 = {
-    base_url: "http://175.178.17.109:8080/"
+    base_url: "http://proxy.xpit.top:32550"
   };
-  const _sfc_main$n = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$o = /* @__PURE__ */ vue.defineComponent({
     __name: "login",
     setup(__props) {
-      const src = "http://cdn.ut.tj.cn/static/auction.png";
       const form = vue.reactive({
-        username: "admin",
+        phone: 15391493308,
         password: "qwer1234"
       });
-      const toRegister = () => {
-        uni.navigateTo({
-          url: "/pages/user/register"
-        });
-      };
       const toLogin = () => {
-        if (form.username == null || form.password.length <= 5) {
-          formatAppLog("log", "at pages/login/login.vue:41", "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u8D26\u53F7\u4E0E\u5BC6\u7801");
+        if (form.phone == null || form.password.length <= 5) {
+          formatAppLog("log", "at pages/login/login.vue:32", "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u8D26\u53F7\u4E0E\u5BC6\u7801");
         } else {
-          formatAppLog("log", "at pages/login/login.vue:43", form);
+          formatAppLog("log", "at pages/login/login.vue:34", form);
           uni.request({
-            url: config$1.base_url + "login",
+            url: config$1.base_url + "/app/login",
             method: "POST",
             data: {
-              "username": form.username,
+              "phone": form.phone,
               "password": form.password
             },
             header: {
@@ -2435,8 +2241,8 @@ if (uni.restoreGlobal) {
             },
             success: (res) => {
               if (res.data.code === 200) {
-                formatAppLog("log", "at pages/login/login.vue:65", res.data.data.tokenHead + " " + res.data.data.token);
-                uni.setStorageSync("token", res.data.data.tokenHead + " " + res.data.data.token);
+                formatAppLog("log", "at pages/login/login.vue:47", res.data.data.token);
+                uni.setStorageSync("token", res.data.data.token);
                 setTimeout(() => {
                   if (uni.getStorageSync("token") != null) {
                     uni.switchTab({
@@ -2445,84 +2251,74 @@ if (uni.restoreGlobal) {
                   }
                 }, 1e3);
               } else {
-                formatAppLog("log", "at pages/login/login.vue:75", res.data.msg);
+                formatAppLog("log", "at pages/login/login.vue:58", res.data.msg);
               }
             }
           });
         }
       };
       return (_ctx, _cache) => {
-        const _component_u_image = resolveEasycom(vue.resolveDynamicComponent("u-image"), __easycom_0$5);
-        const _component_u_input = resolveEasycom(vue.resolveDynamicComponent("u-input"), __easycom_0$4);
-        const _component_u_form_item = resolveEasycom(vue.resolveDynamicComponent("u-form-item"), __easycom_1$4);
-        const _component_u_form = resolveEasycom(vue.resolveDynamicComponent("u-form"), __easycom_7);
-        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_1$3);
-        return vue.openBlock(), vue.createElementBlock("view", { class: "login" }, [
-          vue.createElementVNode("view", { class: "login-header" }, [
-            vue.createElementVNode("view", { class: "login-icon" }, [
-              vue.createVNode(_component_u_image, {
-                width: "40rpx",
-                height: "40rpx",
-                src
-              })
-            ]),
-            vue.createElementVNode("view", { class: "login-title" }, "\u57FA\u4E8E\u533A\u5757\u94FE\u7684\u62CD\u5356\u5E73\u53F0")
-          ]),
-          vue.createVNode(_component_u_form, {
-            model: form,
-            ref: "uForm",
-            style: { "margin": "10rpx" }
-          }, {
-            default: vue.withCtx(() => [
-              vue.createVNode(_component_u_form_item, null, {
-                default: vue.withCtx(() => [
-                  vue.createVNode(_component_u_input, {
-                    modelValue: form.username,
-                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => form.username = $event),
-                    placeholder: "\u8BF7\u8F93\u5165\u8D26\u53F7"
-                  }, null, 8, ["modelValue"])
-                ]),
-                _: 1
-              }),
-              vue.createVNode(_component_u_form_item, null, {
-                default: vue.withCtx(() => [
-                  vue.createVNode(_component_u_input, {
-                    type: "password",
-                    modelValue: form.password,
-                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => form.password = $event),
-                    placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801"
-                  }, null, 8, ["modelValue"])
-                ]),
-                _: 1
-              })
-            ]),
-            _: 1
-          }, 8, ["model"]),
-          vue.createVNode(_component_u_button, {
-            type: "primary",
-            onClick: toLogin,
-            style: { "margin": "10rpx" }
-          }, {
-            default: vue.withCtx(() => [
-              vue.createTextVNode("\u767B\u5F55")
-            ]),
-            _: 1
-          }),
-          vue.createVNode(_component_u_button, {
-            type: "primary",
-            onClick: toRegister,
-            style: { "margin": "10rpx" }
-          }, {
-            default: vue.withCtx(() => [
-              vue.createTextVNode("\u6CE8\u518C")
-            ]),
-            _: 1
-          })
+        const _component_u_input = resolveEasycom(vue.resolveDynamicComponent("u-input"), __easycom_3$1);
+        const _component_u_form_item = resolveEasycom(vue.resolveDynamicComponent("u-form-item"), __easycom_4$1);
+        const _component_u_form = resolveEasycom(vue.resolveDynamicComponent("u-form"), __easycom_5$1);
+        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_2$1);
+        return vue.openBlock(), vue.createElementBlock("view", { class: "content" }, [
+          vue.createElementVNode("view", { class: "login" }, [
+            vue.createElementVNode("view", { class: "title_1" }, "\u533A \u5757 \u94FE \uFF01"),
+            vue.createElementVNode("view", { class: "title_2" }, "Welcome To Micro"),
+            vue.createVNode(_component_u_form, {
+              model: form,
+              class: "form",
+              ref: "uForm"
+            }, {
+              default: vue.withCtx(() => [
+                vue.createVNode(_component_u_form_item, null, {
+                  default: vue.withCtx(() => [
+                    vue.createVNode(_component_u_input, {
+                      modelValue: form.phone,
+                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => form.phone = $event),
+                      type: "number",
+                      placeholder: "\u8BF7\u8F93\u5165\u53F7\u7801",
+                      placeholderStyle: "color: #787878",
+                      class: "form-input"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  _: 1
+                }),
+                vue.createVNode(_component_u_form_item, null, {
+                  default: vue.withCtx(() => [
+                    vue.createVNode(_component_u_input, {
+                      modelValue: form.password,
+                      "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => form.password = $event),
+                      type: "password",
+                      placeholder: "\u8BF7\u8F93\u5165\u5BC6\u7801",
+                      placeholderStyle: "color: #787878",
+                      class: "form-input"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  _: 1
+                })
+              ]),
+              _: 1
+            }, 8, ["model"]),
+            vue.createVNode(_component_u_button, {
+              onClick: toLogin,
+              shape: "circle",
+              class: "submit",
+              type: "primary"
+            }, {
+              default: vue.withCtx(() => [
+                vue.createTextVNode("\u767B\u5F55")
+              ]),
+              _: 1
+            }),
+            vue.createElementVNode("view", { class: "code" }, "\u9A8C\u8BC1\u7801\u767B\u5F55")
+          ])
         ]);
       };
     }
   });
-  var PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-23b3be22"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/pages/login/login.vue"]]);
+  var PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-23b3be22"], ["__file", "D:/app/auction_uniapp/src/pages/login/login.vue"]]);
   var isVue2 = false;
   function set(target, key, val) {
     if (Array.isArray(target)) {
@@ -3937,7 +3733,7 @@ This will fail in production.`);
       }
     }
   });
-  const _sfc_main$m = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$n = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       const title = vue.ref("Hello");
@@ -3957,9 +3753,9 @@ This will fail in production.`);
       };
     }
   });
-  var PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/pages/index/index.vue"]]);
+  var PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__file", "D:/app/auction_uniapp/src/pages/index/index.vue"]]);
   let base64Avatar = "data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjREMEQwRkY0RjgwNDExRUE5OTY2RDgxODY3NkJFODMxIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjREMEQwRkY1RjgwNDExRUE5OTY2RDgxODY3NkJFODMxIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NEQwRDBGRjJGODA0MTFFQTk5NjZEODE4Njc2QkU4MzEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NEQwRDBGRjNGODA0MTFFQTk5NjZEODE4Njc2QkU4MzEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAAGBAQEBQQGBQUGCQYFBgkLCAYGCAsMCgoLCgoMEAwMDAwMDBAMDg8QDw4MExMUFBMTHBsbGxwfHx8fHx8fHx8fAQcHBw0MDRgQEBgaFREVGh8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx//wAARCADIAMgDAREAAhEBAxEB/8QAcQABAQEAAwEBAAAAAAAAAAAAAAUEAQMGAgcBAQAAAAAAAAAAAAAAAAAAAAAQAAIBAwICBgkDBQAAAAAAAAABAhEDBCEFMVFBYXGREiKBscHRMkJSEyOh4XLxYjNDFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A/fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHbHFyZ/Dam+yLA+Z2L0Pjtyj2poD4AAAAAAAAAAAAAAAAAAAAAAAAKWFs9y6lcvvwQeqj8z9wFaziY1n/HbUX9XF97A7QAGXI23EvJ1goyfzR0YEfN269jeZ+a03pNe0DIAAAAAAAAAAAAAAAAAAAACvtO3RcVkXlWutuL9YFYAAAAAOJRjKLjJVi9GmB5/csH/mu1h/in8PU+QGMAAAAAAAAAAAAAAAAAAaMDG/6MmMH8C80+xAelSSVFolwQAAAAAAAHVlWI37ErUulaPk+hgeYnCUJuElSUXRrrQHAAAAAAAAAAAAAAAAABa2Oz4bM7r4zdF2ICmAAAAAAAAAg7zZ8GX41wuJP0rRgYAAAAAAAAAAAAAAAAAD0m2R8ODaXU33tsDSAAAAAAAAAlb9HyWZcnJd9PcBHAAAAAAAAAAAAAAAAAPS7e64Vn+KA0AAAAAAAAAJm+v8Ftf3ewCKAAAAAAAAAAAAAAAAAX9muqeGo9NttP06+0DcAAAAAAAAAjb7dTu2ra+VOT9P8AQCWAAAAAAAAAAAAAAAAAUNmyPt5Ltv4bui/kuAF0AAAAAAADiUlGLlJ0SVW+oDzOXfd/Ind6JPRdS0QHSAAAAAAAAAAAAAAAAAE2nVaNcGB6Lbs6OTao9LsF51z60BrAAAAAABJ3jOVHjW3r/sa9QEgAAAAAAAAAAAAAAAAAAAPu1duWriuW34ZR4MC9hbnZyEoy8l36XwfYBsAAADaSq9EuLAlZ+7xSdrGdW9Hc5dgEdtt1erfFgAAAAAAAAAAAAAAAAADVjbblX6NR8MH80tEBRs7HYivyzlN8lovaBPzduvY0m6eK10TXtAyAarO55lpJK54orolr+4GqO/Xaea1FvqbXvA+Z77kNeW3GPbV+4DJfzcm/pcm3H6Vou5AdAFLC2ed2Pjv1txa8sV8T6wOL+yZEKu1JXFy4MDBOE4ScZxcZLinoB8gAAAAAAAAAAAB242LeyJ+C3GvN9C7QLmJtePYpKS+5c+p8F2IDYAANJqj1T4oCfk7Nj3G5Wn9qXJax7gJ93Z82D8sVNc4v30A6Xg5i42Z+iLfqARwcyT0sz9MWvWBps7LlTf5Grce9/oBTxdtxseklHxT+uWr9AGoAB138ezfj4bsFJdD6V2MCPm7RdtJzs1uW1xXzL3gTgAAAAAAAAADRhYc8q74I6RWs5ckB6GxYtWLat21SK731sDsAAAAAAAAAAAAAAAASt021NO/YjrxuQXT1oCOAAAAAAABzGLlJRSq26JAelwsWONYjbXxcZvmwO8AAAAAAAAAAAAAAAAAAef3TEWPkVivx3NY9T6UBiAAAAAABo2+VmGXblddIJ8eivRUD0oAAAAAAAAAAAAAAAAAAAYt4tKeFKVNYNSXfRgefAAAAAAAAr7VuSSWPedKaW5v1MCsAAAAAAAAAAAAAAAAAAIe6bj96Ts2n+JPzSXzP3ATgAAAAAAAAFbbt1UUrOQ9FpC4/UwK6aaqtU+DAAAAAAAAAAAAAAA4lKMIuUmoxWrb4ARNx3R3q2rLpa4Sl0y/YCcAAAAAAAAAAANmFud7G8r89r6X0dgFvGzLGRGtuWvTF6NAdwAAAAAAAAAAAy5W442PVN+K59EePp5ARMvOv5MvO6QXCC4AZwAAAAAAAAAAAAAcxlKLUotprg1owN+PvORborq+7Hnwl3gUbO74VzRydt8pKn68ANcJwmqwkpLmnUDkAAAAfNy9atqtyagut0AxXt5xIV8Fbj6lRd7Am5G65V6qUvtwfyx94GMAAAAAAAAAAAAAAAAAAAOU2nVOj5gdsc3LiqRvTpyqwOxbnnrhdfpSfrQB7pnv/AGvuS9gHXPMy5/Fem1yq0v0A6W29XqwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf//Z";
-  const _sfc_main$l = {
+  const _sfc_main$m = {
     name: "u-avatar",
     emits: ["click"],
     props: {
@@ -4076,8 +3872,8 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$4);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: "u-avatar",
       style: vue.normalizeStyle([$options.wrapStyle]),
@@ -4119,8 +3915,8 @@ This will fail in production.`);
       ], 4)) : vue.createCommentVNode("v-if", true)
     ], 4);
   }
-  var __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$f], ["__scopeId", "data-v-6a701ab6"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-avatar/u-avatar.vue"]]);
-  const _sfc_main$k = {
+  var __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$g], ["__scopeId", "data-v-6a701ab6"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-avatar/u-avatar.vue"]]);
+  const _sfc_main$l = {
     name: "u-cell-item",
     emits: ["click"],
     props: {
@@ -4234,8 +4030,8 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$4);
     return vue.openBlock(), vue.createElementBlock("view", {
       onClick: _cache[0] || (_cache[0] = (...args) => $options.click && $options.click(...args)),
       class: vue.normalizeClass(["u-cell", { "u-border-bottom": $props.borderBottom, "u-border-top": $props.borderTop, "u-col-center": $props.center, "u-cell--required": $props.required }]),
@@ -4301,7 +4097,7 @@ This will fail in production.`);
       }, null, 8, ["style"])) : vue.createCommentVNode("v-if", true)
     ], 14, ["hover-class"]);
   }
-  var __easycom_5 = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$e], ["__scopeId", "data-v-09d67224"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-cell-item/u-cell-item.vue"]]);
+  var __easycom_5 = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$f], ["__scopeId", "data-v-09d67224"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-cell-item/u-cell-item.vue"]]);
   var StateType = /* @__PURE__ */ ((StateType2) => {
     StateType2["USER"] = "user";
     StateType2["PRODUCT"] = "product";
@@ -4328,7 +4124,7 @@ This will fail in production.`);
   };
   const logout = () => {
     return request({
-      url: "logout",
+      url: "/app/logout",
       method: "GET",
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -4338,17 +4134,16 @@ This will fail in production.`);
   };
   const getUserInfo = () => {
     return request({
-      url: "admin/userInfo",
+      url: "/app/userInfo",
       method: "GET",
       header: {
-        "Content-Type": "application/x-www-form-urlencoded",
         "Authorization": uni.getStorageSync("token")
       }
     });
   };
   const getBalance = () => {
     return request({
-      url: "admin/getBalance",
+      url: "/admin/getBalance",
       method: "GET",
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -4358,7 +4153,7 @@ This will fail in production.`);
   };
   const addProduct = (product) => {
     return request({
-      url: "contract/addProduct",
+      url: "/contract/addProduct",
       method: "POST",
       data: product,
       header: {
@@ -4367,19 +4162,31 @@ This will fail in production.`);
       }
     });
   };
-  const getProduct = () => {
+  const bid = (bids) => {
     return request({
-      url: "product/getProduct",
-      method: "GET",
+      url: "/contract/bid",
+      method: "POST",
+      data: bids,
       header: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
         "Authorization": uni.getStorageSync("token")
       }
     });
   };
+  const getProduct = (query) => {
+    return request({
+      url: "/app/goods/list",
+      method: "GET",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": uni.getStorageSync("token")
+      },
+      data: query
+    });
+  };
   const totalBids = (id) => {
     return request({
-      url: "contract/totalBids/" + id,
+      url: "/contract/totalBids/" + id,
       method: "GET",
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -4389,7 +4196,7 @@ This will fail in production.`);
   };
   const getProductById = (id) => {
     return request({
-      url: "contract/getProduct/" + id,
+      url: "/app/goods/byId/" + id,
       method: "GET",
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -4422,27 +4229,20 @@ This will fail in production.`);
       }
     }
   });
-  const _sfc_main$j = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$k = /* @__PURE__ */ vue.defineComponent({
     __name: "user",
     setup(__props) {
       const useUserState = useUserStore();
       const user = vue.computed(() => useUserState.getUserInfo);
-      const money = vue.computed(() => useUserState.getMoney);
       onLoad(async () => {
         await useUserState.setUserInfo();
-        await useUserState.setBalance();
       });
-      vue.ref("http://cdn.ut.tj.cn/test/bg.jpg");
       const toLogout = () => {
         logout().then((res) => {
-          formatAppLog("log", "at pages/user/user.vue:37", res);
-          uni.removeStorage({
-            key: "token",
-            success: function() {
-              uni.redirectTo({
-                url: "/pages/login/login"
-              });
-            }
+          formatAppLog("log", "at pages/user/user.vue:52", res);
+          uni.removeStorageSync("token");
+          uni.redirectTo({
+            url: "/pages/login/login"
           });
         });
       };
@@ -4456,35 +4256,47 @@ This will fail in production.`);
         const _component_u_cell_item = resolveEasycom(vue.resolveDynamicComponent("u-cell-item"), __easycom_5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "content" }, [
           vue.createElementVNode("view", { class: "content-user" }, [
-            vue.createVNode(_component_u_avatar, {
-              src: vue.unref(user).avatar,
-              mode: "square"
-            }, null, 8, ["src"]),
-            vue.createCommentVNode(" <view>{{user}}</view> "),
-            vue.createElementVNode("view", null, vue.toDisplayString(vue.unref(user).username), 1),
-            vue.createElementVNode("view", null, vue.toDisplayString(vue.unref(user).address), 1),
-            vue.createElementVNode("view", null, "ETH\uFF1A" + vue.toDisplayString(vue.unref(money)), 1)
+            vue.createElementVNode("view", { class: "content-user-avatar" }, [
+              vue.createVNode(_component_u_avatar, {
+                src: vue.unref(user).avatar,
+                mode: "square"
+              }, null, 8, ["src"])
+            ]),
+            vue.createElementVNode("view", { class: "content-user-info" }, [
+              vue.createElementVNode("view", { class: "user-top" }, vue.toDisplayString(vue.unref(user).username), 1),
+              vue.createElementVNode("view", { class: "user-top" }, vue.toDisplayString(vue.unref(user).name), 1)
+            ])
           ]),
-          vue.createVNode(_component_u_cell_item, {
-            icon: "shopping-cart-fill",
-            title: "\u6211\u7684\u8D2D\u4E70"
-          }),
-          vue.createVNode(_component_u_cell_item, {
-            icon: "bookmark-fill",
-            title: "\u53D1\u5E03",
-            onClick: toProdoctRelease
-          }),
-          vue.createVNode(_component_u_cell_item, {
-            icon: "setting-fill",
-            title: "\u9000\u51FA",
-            onClick: toLogout
-          })
+          vue.createElementVNode("view", { class: "user-card" }, [
+            vue.createElementVNode("view", { class: "user-card-address" }, vue.toDisplayString(vue.unref(user).address), 1),
+            vue.createElementVNode("view", { class: "user-card-balance" }, "ETH\uFF1A" + vue.toDisplayString(vue.unref(user).balance), 1)
+          ]),
+          vue.createElementVNode("view", { class: "bottom-card" }, [
+            vue.createVNode(_component_u_cell_item, {
+              icon: "shopping-cart-fill",
+              title: "\u6211\u7684\u7ADE\u62CD"
+            }),
+            vue.createVNode(_component_u_cell_item, {
+              icon: "bookmark-fill",
+              title: "\u53D1\u5E03",
+              onClick: toProdoctRelease
+            }),
+            vue.createVNode(_component_u_cell_item, {
+              icon: "setting-fill",
+              title: "\u9000\u51FA",
+              onClick: toLogout
+            }),
+            vue.createVNode(_component_u_cell_item, {
+              icon: "setting-fill",
+              title: "\u5E94\u7528\u8BBE\u7F6E"
+            })
+          ])
         ]);
       };
     }
   });
-  var PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-1198f63b"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/pages/user/user.vue"]]);
-  const _sfc_main$i = {
+  var PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-1198f63b"], ["__file", "D:/app/auction_uniapp/src/pages/user/user.vue"]]);
+  const _sfc_main$j = {
     name: "u-lazy-load",
     emits: ["click", "load", "error"],
     props: {
@@ -4631,7 +4443,7 @@ This will fail in production.`);
       }, 30);
     }
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["u-wrap", "u-lazy-item-" + $data.elIndex]),
       style: vue.normalizeStyle({
@@ -4664,8 +4476,8 @@ This will fail in production.`);
       ], 2)
     ], 6);
   }
-  var __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$d], ["__scopeId", "data-v-65385da6"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-lazy-load/u-lazy-load.vue"]]);
-  const _sfc_main$h = {
+  var __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$e], ["__scopeId", "data-v-65385da6"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-lazy-load/u-lazy-load.vue"]]);
+  const _sfc_main$i = {
     name: "u-waterfall",
     emits: ["update:modelValue", "input"],
     props: {
@@ -4790,7 +4602,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "u-waterfall" }, [
       vue.createElementVNode("view", {
         id: "u-left-column",
@@ -4806,11 +4618,12 @@ This will fail in production.`);
       ])
     ]);
   }
-  var __easycom_1$2 = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$c], ["__scopeId", "data-v-349a3de8"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-waterfall/u-waterfall.vue"]]);
+  var __easycom_1$2 = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$d], ["__scopeId", "data-v-349a3de8"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-waterfall/u-waterfall.vue"]]);
   const useProductStore = defineStore({
     id: StateType.PRODUCT,
     state: () => ({
-      product: []
+      product: [],
+      queryParam: {}
     }),
     getters: {
       getProductList() {
@@ -4819,16 +4632,22 @@ This will fail in production.`);
     },
     actions: {
       async setProductList() {
-        const productInfo = await getProduct();
-        this.product = productInfo.data;
+        const productInfo = await getProduct(this.queryParam);
+        formatAppLog("log", "at store/modules/product.ts:21", productInfo);
+        this.product = productInfo.rows;
+      },
+      async changeVal() {
+        this.queryParam.pageNum = 1;
+        this.queryParam.pageSize = 10;
       }
     }
   });
-  const _sfc_main$g = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$h = /* @__PURE__ */ vue.defineComponent({
     __name: "product",
     setup(__props) {
       const useProductState = useProductStore();
       onLoad(async () => {
+        await useProductState.changeVal();
         await useProductState.setProductList();
         initData();
       });
@@ -4836,9 +4655,8 @@ This will fail in production.`);
       const productList = vue.reactive([]);
       const initData = async () => {
         for (var i = 0; i < product.value.length; i++) {
-          formatAppLog("log", "at pages/product/product.vue:109", product.value[i].id);
+          formatAppLog("log", "at pages/product/product.vue:112", product.value[i].id);
           const result = await totalBids(product.value[i].id);
-          formatAppLog("log", "at pages/product/product.vue:111", result.data);
           var auctionState;
           var auctionStartTimeReplace = replaceDate(product.value[i].auctionStartTime);
           var auctionEndTimeReplace = replaceDate(product.value[i].auctionEndTime);
@@ -4858,8 +4676,8 @@ This will fail in production.`);
             id: product.value[i].id,
             name: product.value[i].name,
             category: product.value[i].category,
-            imageLink: product.value[i].imageLink,
-            descLink: product.value[i].descLink,
+            imageLink: config$1.base_url + product.value[i].imageLink,
+            description: product.value[i].description,
             auctionStartTime: product.value[i].auctionStartTime,
             auctionEndTime: product.value[i].auctionEndTime,
             startPrice: product.value[i].startPrice,
@@ -4979,8 +4797,8 @@ This will fail in production.`);
       };
     }
   });
-  var PagesProductProduct = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-8f03510a"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/pages/product/product.vue"]]);
-  const _sfc_main$f = {
+  var PagesProductProduct = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-8f03510a"], ["__file", "D:/app/auction_uniapp/src/pages/product/product.vue"]]);
+  const _sfc_main$g = {
     data() {
       return {
         avatar: "https://cdn.uviewui.com/uview/common/logo.png"
@@ -5018,8 +4836,8 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_1$3);
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_2$1);
     return vue.openBlock(), vue.createElementBlock("view", { class: "wrap" }, [
       vue.createElementVNode("view", { class: "u-avatar-wrap" }, [
         vue.createElementVNode("image", {
@@ -5036,8 +4854,8 @@ This will fail in production.`);
       }, 8, ["onClick"])
     ]);
   }
-  var Avatar = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$b], ["__scopeId", "data-v-5189426e"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/pages/user/avatar.vue"]]);
-  const _sfc_main$e = /* @__PURE__ */ vue.defineComponent({
+  var Avatar = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$c], ["__scopeId", "data-v-5189426e"], ["__file", "D:/app/auction_uniapp/src/pages/user/avatar.vue"]]);
+  const _sfc_main$f = /* @__PURE__ */ vue.defineComponent({
     __name: "register",
     setup(__props) {
       const form = vue.reactive({
@@ -5082,10 +4900,10 @@ This will fail in production.`);
         }
       };
       return (_ctx, _cache) => {
-        const _component_u_input = resolveEasycom(vue.resolveDynamicComponent("u-input"), __easycom_0$4);
-        const _component_u_form_item = resolveEasycom(vue.resolveDynamicComponent("u-form-item"), __easycom_1$4);
-        const _component_u_form = resolveEasycom(vue.resolveDynamicComponent("u-form"), __easycom_7);
-        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_1$3);
+        const _component_u_input = resolveEasycom(vue.resolveDynamicComponent("u-input"), __easycom_3$1);
+        const _component_u_form_item = resolveEasycom(vue.resolveDynamicComponent("u-form-item"), __easycom_4$1);
+        const _component_u_form = resolveEasycom(vue.resolveDynamicComponent("u-form"), __easycom_5$1);
+        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_2$1);
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.createElementVNode("view", { class: "login-title" }, "\u57FA\u4E8E\u533A\u5757\u94FE\u7684\u62CD\u5356\u5E73\u53F0"),
           vue.createVNode(vue.unref(Avatar)),
@@ -5133,7 +4951,7 @@ This will fail in production.`);
       };
     }
   });
-  var PagesUserRegister = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-0566a113"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/pages/user/register.vue"]]);
+  var PagesUserRegister = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-0566a113"], ["__file", "D:/app/auction_uniapp/src/pages/user/register.vue"]]);
   var device = void 0;
   var TOUCH_STATE = ["touchstarted", "touchmoved", "touchended"];
   function firstLetterUpper(str) {
@@ -6060,7 +5878,7 @@ This will fail in production.`);
   WeCropper.prototype.methods = methods;
   WeCropper.prototype.cutt = cut;
   WeCropper.prototype.update = update;
-  const _sfc_main$d = {
+  const _sfc_main$e = {
     props: {
       boundStyle: {
         type: Object,
@@ -6198,7 +6016,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "content" }, [
       vue.createElementVNode("view", {
         class: "cropper-wrapper",
@@ -6243,8 +6061,8 @@ This will fail in production.`);
       ], 4)
     ]);
   }
-  var Uni_modulesVkUviewUiComponentsUAvatarCropperUAvatarCropper = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$a], ["__scopeId", "data-v-425276b6"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-avatar-cropper/u-avatar-cropper.vue"]]);
-  const _sfc_main$c = {
+  var Uni_modulesVkUviewUiComponentsUAvatarCropperUAvatarCropper = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$b], ["__scopeId", "data-v-425276b6"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-avatar-cropper/u-avatar-cropper.vue"]]);
+  const _sfc_main$d = {
     name: "u-radio",
     emits: ["change"],
     props: {
@@ -6385,8 +6203,8 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$4);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: "u-radio",
       style: vue.normalizeStyle([$options.radioStyle])
@@ -6412,8 +6230,8 @@ This will fail in production.`);
       ], 4)
     ], 4);
   }
-  var __easycom_2$1 = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$9], ["__scopeId", "data-v-08b7cd44"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-radio/u-radio.vue"]]);
-  const _sfc_main$b = {
+  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$a], ["__scopeId", "data-v-08b7cd44"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-radio/u-radio.vue"]]);
+  const _sfc_main$c = {
     name: "u-radio-group",
     emits: ["update:modelValue", "input", "change"],
     mixins: [Emitter],
@@ -6519,15 +6337,15 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["u-radio-group u-clearfix", $data.uFromData.inputAlign == "right" ? "flex-end" : ""])
     }, [
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ], 2);
   }
-  var __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$8], ["__scopeId", "data-v-b5c71a7c"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-radio-group/u-radio-group.vue"]]);
-  const _sfc_main$a = {
+  var __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$9], ["__scopeId", "data-v-b5c71a7c"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-radio-group/u-radio-group.vue"]]);
+  const _sfc_main$b = {
     name: "u-mask",
     emits: ["click"],
     props: {
@@ -6612,7 +6430,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["u-mask", {
         "u-mask-zoom": $props.zoom,
@@ -6627,8 +6445,8 @@ This will fail in production.`);
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ], 38);
   }
-  var __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$7], ["__scopeId", "data-v-22d50354"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-mask/u-mask.vue"]]);
-  const _sfc_main$9 = {
+  var __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$8], ["__scopeId", "data-v-22d50354"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-mask/u-mask.vue"]]);
+  const _sfc_main$a = {
     name: "u-popup",
     emits: ["update:modelValue", "input", "open", "close"],
     props: {
@@ -6853,9 +6671,9 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_u_mask = resolveEasycom(vue.resolveDynamicComponent("u-mask"), __easycom_0$1);
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$4);
     return $data.visibleSync ? (vue.openBlock(), vue.createElementBlock("view", {
       key: 0,
       style: vue.normalizeStyle([$props.customStyle, {
@@ -6930,7 +6748,7 @@ This will fail in production.`);
       ], 38)
     ], 4)) : vue.createCommentVNode("v-if", true);
   }
-  var __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$6], ["__scopeId", "data-v-fed2de80"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-popup/u-popup.vue"]]);
+  var __easycom_6$1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$7], ["__scopeId", "data-v-fed2de80"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-popup/u-popup.vue"]]);
   var provinces = [
     {
       code: "110000",
@@ -22699,7 +22517,7 @@ This will fail in production.`);
       ]
     ]
   ];
-  const _sfc_main$8 = {
+  const _sfc_main$9 = {
     name: "u-picker",
     emits: ["update:modelValue", "input", "confirm", "cancel"],
     props: {
@@ -23255,8 +23073,8 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_1$1);
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6$1);
     return vue.openBlock(), vue.createBlock(_component_u_popup, {
       maskCloseAble: $props.maskCloseAble,
       mode: "bottom",
@@ -23470,8 +23288,8 @@ This will fail in production.`);
       _: 1
     }, 8, ["maskCloseAble", "modelValue", "safeAreaInsetBottom", "onClose", "z-index", "blur"]);
   }
-  var __easycom_4 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$5], ["__scopeId", "data-v-59f59656"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-picker/u-picker.vue"]]);
-  const _sfc_main$7 = {
+  var __easycom_4 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$6], ["__scopeId", "data-v-59f59656"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-picker/u-picker.vue"]]);
+  const _sfc_main$8 = {
     name: "u-line-progress",
     props: {
       round: {
@@ -23525,7 +23343,7 @@ This will fail in production.`);
     },
     methods: {}
   };
-  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: "u-progress",
       style: vue.normalizeStyle({
@@ -23548,8 +23366,8 @@ This will fail in production.`);
       ], 6)
     ], 4);
   }
-  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$4], ["__scopeId", "data-v-0e476398"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-line-progress/u-line-progress.vue"]]);
-  const _sfc_main$6 = {
+  var __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$5], ["__scopeId", "data-v-0e476398"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-line-progress/u-line-progress.vue"]]);
+  const _sfc_main$7 = {
     name: "u-upload",
     emits: ["update:file-list", "on-oversize", "on-list-change", "on-preview", "on-remove", "on-success", "on-change", "on-error", "on-progress", "on-uploaded", "on-choose-complete", "on-choose-fail"],
     props: {
@@ -23964,9 +23782,9 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-    const _component_u_line_progress = resolveEasycom(vue.resolveDynamicComponent("u-line-progress"), __easycom_1);
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$4);
+    const _component_u_line_progress = resolveEasycom(vue.resolveDynamicComponent("u-line-progress"), __easycom_1$1);
     return !$props.disabled ? (vue.openBlock(), vue.createElementBlock("view", {
       key: 0,
       class: "u-upload"
@@ -24044,8 +23862,8 @@ This will fail in production.`);
       ])) : vue.createCommentVNode("v-if", true)
     ])) : vue.createCommentVNode("v-if", true);
   }
-  var __easycom_6 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3], ["__scopeId", "data-v-c19d5094"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-upload/u-upload.vue"]]);
-  const _sfc_main$5 = /* @__PURE__ */ vue.defineComponent({
+  var __easycom_6 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$4], ["__scopeId", "data-v-c19d5094"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-upload/u-upload.vue"]]);
+  const _sfc_main$6 = /* @__PURE__ */ vue.defineComponent({
     __name: "newProduct",
     setup(__props) {
       const params = {
@@ -24102,15 +23920,15 @@ This will fail in production.`);
         });
       };
       return (_ctx, _cache) => {
-        const _component_u_input = resolveEasycom(vue.resolveDynamicComponent("u-input"), __easycom_0$4);
-        const _component_u_form_item = resolveEasycom(vue.resolveDynamicComponent("u-form-item"), __easycom_1$4);
-        const _component_u_radio = resolveEasycom(vue.resolveDynamicComponent("u-radio"), __easycom_2$1);
+        const _component_u_input = resolveEasycom(vue.resolveDynamicComponent("u-input"), __easycom_3$1);
+        const _component_u_form_item = resolveEasycom(vue.resolveDynamicComponent("u-form-item"), __easycom_4$1);
+        const _component_u_radio = resolveEasycom(vue.resolveDynamicComponent("u-radio"), __easycom_2);
         const _component_u_radio_group = resolveEasycom(vue.resolveDynamicComponent("u-radio-group"), __easycom_3);
         const _component_u_picker = resolveEasycom(vue.resolveDynamicComponent("u-picker"), __easycom_4);
         const _component_u_cell_item = resolveEasycom(vue.resolveDynamicComponent("u-cell-item"), __easycom_5);
         const _component_u_upload = resolveEasycom(vue.resolveDynamicComponent("u-upload"), __easycom_6);
-        const _component_u_form = resolveEasycom(vue.resolveDynamicComponent("u-form"), __easycom_7);
-        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_1$3);
+        const _component_u_form = resolveEasycom(vue.resolveDynamicComponent("u-form"), __easycom_5$1);
+        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_2$1);
         return vue.openBlock(), vue.createElementBlock("view", { class: "content" }, [
           vue.createVNode(_component_u_form, {
             model: form,
@@ -24237,324 +24055,431 @@ This will fail in production.`);
       };
     }
   });
-  var PagesProductNewProduct = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/pages/product/newProduct.vue"]]);
-  const _sfc_main$4 = {
-    name: "u-loading",
+  var PagesProductNewProduct = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__file", "D:/app/auction_uniapp/src/pages/product/newProduct.vue"]]);
+  const _sfc_main$5 = {
+    name: "u-image",
+    emits: ["click", "error", "load"],
     props: {
-      mode: {
+      src: {
         type: String,
-        default: "circle"
-      },
-      color: {
-        type: String,
-        default: "#c7c7c7"
-      },
-      size: {
-        type: [String, Number],
-        default: "34"
-      },
-      show: {
-        type: Boolean,
-        default: true
-      }
-    },
-    computed: {
-      cricleStyle() {
-        let style = {};
-        style.width = this.size + "rpx";
-        style.height = this.size + "rpx";
-        if (this.mode == "circle")
-          style.borderColor = `#e4e4e4 #e4e4e4 #e4e4e4 ${this.color ? this.color : "#c7c7c7"}`;
-        return style;
-      }
-    }
-  };
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-    return $props.show ? (vue.openBlock(), vue.createElementBlock("view", {
-      key: 0,
-      class: vue.normalizeClass(["u-loading", $props.mode == "circle" ? "u-loading-circle" : "u-loading-flower"]),
-      style: vue.normalizeStyle([$options.cricleStyle])
-    }, null, 6)) : vue.createCommentVNode("v-if", true);
-  }
-  var __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$2], ["__scopeId", "data-v-35d0dd20"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-loading/u-loading.vue"]]);
-  const _sfc_main$3 = {
-    name: "u-modal",
-    emits: ["update:modelValue", "input", "confirm", "cancel"],
-    props: {
-      value: {
-        type: Boolean,
-        default: false
-      },
-      modelValue: {
-        type: Boolean,
-        default: false
-      },
-      zIndex: {
-        type: [Number, String],
         default: ""
       },
-      title: {
-        type: [String],
-        default: "\u63D0\u793A"
+      mode: {
+        type: String,
+        default: "aspectFill"
       },
       width: {
-        type: [Number, String],
-        default: 600
+        type: [String, Number],
+        default: "100%"
       },
-      content: {
+      height: {
+        type: [String, Number],
+        default: "auto"
+      },
+      shape: {
         type: String,
-        default: "\u5185\u5BB9"
-      },
-      showTitle: {
-        type: Boolean,
-        default: true
-      },
-      showConfirmButton: {
-        type: Boolean,
-        default: true
-      },
-      showCancelButton: {
-        type: Boolean,
-        default: false
-      },
-      confirmText: {
-        type: String,
-        default: "\u786E\u8BA4"
-      },
-      cancelText: {
-        type: String,
-        default: "\u53D6\u6D88"
-      },
-      confirmColor: {
-        type: String,
-        default: "#2979ff"
-      },
-      cancelColor: {
-        type: String,
-        default: "#606266"
+        default: "square"
       },
       borderRadius: {
-        type: [Number, String],
-        default: 16
-      },
-      titleStyle: {
-        type: Object,
-        default() {
-          return {};
-        }
-      },
-      contentStyle: {
-        type: Object,
-        default() {
-          return {};
-        }
-      },
-      cancelStyle: {
-        type: Object,
-        default() {
-          return {};
-        }
-      },
-      confirmStyle: {
-        type: Object,
-        default() {
-          return {};
-        }
-      },
-      zoom: {
-        type: Boolean,
-        default: true
-      },
-      asyncClose: {
-        type: Boolean,
-        default: false
-      },
-      maskCloseAble: {
-        type: Boolean,
-        default: false
-      },
-      negativeTop: {
         type: [String, Number],
         default: 0
       },
-      blur: {
-        type: [Number, String],
-        default: 0
+      lazyLoad: {
+        type: Boolean,
+        default: true
+      },
+      showMenuByLongpress: {
+        type: Boolean,
+        default: true
+      },
+      loadingIcon: {
+        type: String,
+        default: "photo"
+      },
+      errorIcon: {
+        type: String,
+        default: "error-circle"
+      },
+      showLoading: {
+        type: Boolean,
+        default: true
+      },
+      showError: {
+        type: Boolean,
+        default: true
+      },
+      fade: {
+        type: Boolean,
+        default: true
+      },
+      webp: {
+        type: Boolean,
+        default: false
+      },
+      duration: {
+        type: [String, Number],
+        default: 500
+      },
+      bgColor: {
+        type: String,
+        default: "#f3f4f6"
       }
     },
     data() {
       return {
-        loading: false,
-        popupValue: false
+        isError: false,
+        loading: true,
+        opacity: 1,
+        durationTime: this.duration,
+        backgroundStyle: {}
       };
     },
-    computed: {
-      valueCom() {
-        return this.modelValue;
-      },
-      cancelBtnStyle() {
-        return Object.assign(
-          {
-            color: this.cancelColor
-          },
-          this.cancelStyle
-        );
-      },
-      confirmBtnStyle() {
-        return Object.assign(
-          {
-            color: this.confirmColor
-          },
-          this.confirmStyle
-        );
-      },
-      uZIndex() {
-        return this.zIndex ? this.zIndex : this.$u.zIndex.popup;
+    watch: {
+      src: {
+        immediate: true,
+        handler(n) {
+          if (!n) {
+            this.isError = true;
+            this.loading = false;
+          } else {
+            this.isError = false;
+          }
+        }
       }
     },
-    watch: {
-      valueCom(n) {
-        if (n === true)
-          this.loading = false;
-        this.popupValue = n;
+    computed: {
+      wrapStyle() {
+        let style = {};
+        style.width = this.$u.addUnit(this.width);
+        style.height = this.$u.addUnit(this.height);
+        style.borderRadius = this.shape == "circle" ? "50%" : this.$u.addUnit(this.borderRadius);
+        style.overflow = this.borderRadius > 0 ? "hidden" : "visible";
+        if (this.fade) {
+          style.opacity = this.opacity;
+          style.transition = `opacity ${Number(this.durationTime) / 1e3}s ease-in-out`;
+        }
+        return style;
       }
     },
     methods: {
-      confirm() {
-        if (this.asyncClose) {
-          this.loading = true;
-        } else {
-          this.$emit("input", false);
-          this.$emit("update:modelValue", false);
-        }
-        this.$emit("confirm");
+      onClick() {
+        this.$emit("click");
       },
-      cancel() {
-        this.$emit("cancel");
-        this.$emit("input", false);
-        this.$emit("update:modelValue", false);
-        setTimeout(() => {
-          this.loading = false;
-        }, 300);
-      },
-      popupClose() {
-        this.$emit("input", false);
-        this.$emit("update:modelValue", false);
-      },
-      clearLoading() {
+      onErrorHandler(err) {
         this.loading = false;
+        this.isError = true;
+        this.$emit("error", err);
+      },
+      onLoadHandler() {
+        this.loading = false;
+        this.isError = false;
+        this.$emit("load");
+        if (!this.fade)
+          return this.removeBgColor();
+        this.opacity = 0;
+        this.durationTime = 0;
+        setTimeout(() => {
+          this.durationTime = this.duration;
+          this.opacity = 1;
+          setTimeout(() => {
+            this.removeBgColor();
+          }, this.durationTime);
+        }, 50);
+      },
+      removeBgColor() {
+        this.backgroundStyle = {
+          backgroundColor: "transparent"
+        };
       }
     }
   };
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_loading = resolveEasycom(vue.resolveDynamicComponent("u-loading"), __easycom_0);
-    const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_1$1);
-    return vue.openBlock(), vue.createElementBlock("view", null, [
-      vue.createVNode(_component_u_popup, {
-        blur: $props.blur,
-        zoom: $props.zoom,
-        mode: "center",
-        popup: false,
-        "z-index": $options.uZIndex,
-        modelValue: $data.popupValue,
-        "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $data.popupValue = $event),
-        length: $props.width,
-        "mask-close-able": $props.maskCloseAble,
-        "border-radius": $props.borderRadius,
-        onClose: $options.popupClose,
-        "negative-top": $props.negativeTop
-      }, {
-        default: vue.withCtx(() => [
-          vue.createElementVNode("view", { class: "u-model" }, [
-            $props.showTitle ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 0,
-              class: "u-model__title u-line-1",
-              style: vue.normalizeStyle([$props.titleStyle])
-            }, vue.toDisplayString($props.title), 5)) : vue.createCommentVNode("v-if", true),
-            vue.createElementVNode("view", { class: "u-model__content" }, [
-              _ctx.$slots.default || _ctx.$slots.$default ? (vue.openBlock(), vue.createElementBlock("view", {
-                key: 0,
-                style: vue.normalizeStyle([$props.contentStyle])
-              }, [
-                vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-              ], 4)) : (vue.openBlock(), vue.createElementBlock("view", {
-                key: 1,
-                class: "u-model__content__message",
-                style: vue.normalizeStyle([$props.contentStyle])
-              }, vue.toDisplayString($props.content), 5))
-            ]),
-            $props.showCancelButton || $props.showConfirmButton ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 1,
-              class: "u-model__footer u-border-top"
-            }, [
-              $props.showCancelButton ? (vue.openBlock(), vue.createElementBlock("view", {
-                key: 0,
-                "hover-stay-time": 100,
-                "hover-class": "u-model__btn--hover",
-                class: "u-model__footer__button",
-                style: vue.normalizeStyle([$options.cancelBtnStyle]),
-                onClick: _cache[0] || (_cache[0] = (...args) => $options.cancel && $options.cancel(...args))
-              }, vue.toDisplayString($props.cancelText), 5)) : vue.createCommentVNode("v-if", true),
-              $props.showConfirmButton || _ctx.$slots["confirm-button"] ? (vue.openBlock(), vue.createElementBlock("view", {
-                key: 1,
-                "hover-stay-time": 100,
-                "hover-class": $props.asyncClose ? "none" : "u-model__btn--hover",
-                class: "u-model__footer__button hairline-left",
-                style: vue.normalizeStyle([$options.confirmBtnStyle]),
-                onClick: _cache[1] || (_cache[1] = (...args) => $options.confirm && $options.confirm(...args))
-              }, [
-                _ctx.$slots["confirm-button"] ? vue.renderSlot(_ctx.$slots, "confirm-button", { key: 0 }, void 0, true) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
-                  $data.loading ? (vue.openBlock(), vue.createBlock(_component_u_loading, {
-                    key: 0,
-                    mode: "circle",
-                    color: $props.confirmColor
-                  }, null, 8, ["color"])) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
-                    vue.createTextVNode(vue.toDisplayString($props.confirmText), 1)
-                  ], 64))
-                ], 64))
-              ], 12, ["hover-class"])) : vue.createCommentVNode("v-if", true)
-            ])) : vue.createCommentVNode("v-if", true)
-          ])
-        ]),
-        _: 3
-      }, 8, ["blur", "zoom", "z-index", "modelValue", "length", "mask-close-able", "border-radius", "onClose", "negative-top"])
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$4);
+    return vue.openBlock(), vue.createElementBlock("view", {
+      class: "u-image",
+      onClick: _cache[2] || (_cache[2] = (...args) => $options.onClick && $options.onClick(...args)),
+      style: vue.normalizeStyle([$options.wrapStyle, $data.backgroundStyle])
+    }, [
+      !$data.isError ? (vue.openBlock(), vue.createElementBlock("image", {
+        key: 0,
+        src: $props.src,
+        mode: $props.mode,
+        onError: _cache[0] || (_cache[0] = (...args) => $options.onErrorHandler && $options.onErrorHandler(...args)),
+        onLoad: _cache[1] || (_cache[1] = (...args) => $options.onLoadHandler && $options.onLoadHandler(...args)),
+        "lazy-load": $props.lazyLoad,
+        class: "u-image__image",
+        style: vue.normalizeStyle({
+          borderRadius: $props.shape == "circle" ? "50%" : _ctx.$u.addUnit($props.borderRadius)
+        })
+      }, null, 44, ["src", "mode", "lazy-load"])) : vue.createCommentVNode("v-if", true),
+      $props.showLoading && $data.loading ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 1,
+        class: "u-image__loading",
+        style: vue.normalizeStyle({
+          borderRadius: $props.shape == "circle" ? "50%" : _ctx.$u.addUnit($props.borderRadius),
+          backgroundColor: $props.bgColor
+        })
+      }, [
+        _ctx.$slots.loading ? vue.renderSlot(_ctx.$slots, "loading", { key: 0 }, void 0, true) : (vue.openBlock(), vue.createBlock(_component_u_icon, {
+          key: 1,
+          name: $props.loadingIcon,
+          width: $props.width,
+          height: $props.height
+        }, null, 8, ["name", "width", "height"]))
+      ], 4)) : vue.createCommentVNode("v-if", true),
+      $props.showError && $data.isError && !$data.loading ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 2,
+        class: "u-image__error",
+        style: vue.normalizeStyle({
+          borderRadius: $props.shape == "circle" ? "50%" : _ctx.$u.addUnit($props.borderRadius)
+        })
+      }, [
+        _ctx.$slots.error ? vue.renderSlot(_ctx.$slots, "error", { key: 0 }, void 0, true) : (vue.openBlock(), vue.createBlock(_component_u_icon, {
+          key: 1,
+          name: $props.errorIcon,
+          width: $props.width,
+          height: $props.height
+        }, null, 8, ["name", "width", "height"]))
+      ], 4)) : vue.createCommentVNode("v-if", true)
+    ], 4);
+  }
+  var __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$3], ["__scopeId", "data-v-c8daf7c4"], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-image/u-image.vue"]]);
+  function padZero(num, targetLength = 2) {
+    let str = `${num}`;
+    while (str.length < targetLength) {
+      str = `0${str}`;
+    }
+    return str;
+  }
+  const SECOND = 1e3;
+  const MINUTE = 60 * SECOND;
+  const HOUR = 60 * MINUTE;
+  const DAY = 24 * HOUR;
+  function parseTimeData(time) {
+    const days = Math.floor(time / DAY);
+    const hours = Math.floor(time % DAY / HOUR);
+    const minutes = Math.floor(time % HOUR / MINUTE);
+    const seconds = Math.floor(time % MINUTE / SECOND);
+    const milliseconds = Math.floor(time % SECOND);
+    return {
+      days,
+      hours,
+      minutes,
+      seconds,
+      milliseconds
+    };
+  }
+  function parseFormat(format2, timeData) {
+    let {
+      days,
+      hours,
+      minutes,
+      seconds,
+      milliseconds
+    } = timeData;
+    if (format2.indexOf("DD") === -1) {
+      hours += days * 24;
+    } else {
+      format2 = format2.replace("DD", padZero(days));
+    }
+    if (format2.indexOf("HH") === -1) {
+      minutes += hours * 60;
+    } else {
+      format2 = format2.replace("HH", padZero(hours));
+    }
+    if (format2.indexOf("mm") === -1) {
+      seconds += minutes * 60;
+    } else {
+      format2 = format2.replace("mm", padZero(minutes));
+    }
+    if (format2.indexOf("ss") === -1) {
+      milliseconds += seconds * 1e3;
+    } else {
+      format2 = format2.replace("ss", padZero(seconds));
+    }
+    return format2.replace("SSS", padZero(milliseconds, 3));
+  }
+  function isSameSecond(time1, time2) {
+    return Math.floor(time1 / 1e3) === Math.floor(time2 / 1e3);
+  }
+  const _sfc_main$4 = {
+    name: "u-count-down",
+    emits: ["change", "end", "finish"],
+    props: {
+      timestamp: {
+        type: [String, Number],
+        default: 0
+      },
+      format: {
+        type: String,
+        default: "DD:HH:mm:ss"
+      },
+      autoStart: {
+        type: Boolean,
+        default: true
+      },
+      customStyle: {
+        type: [String, Object],
+        default: ""
+      }
+    },
+    data() {
+      return {
+        timer: null,
+        timeData: parseTimeData(0),
+        formattedTime: "0",
+        runing: false,
+        endTime: 0,
+        remainTime: 0
+      };
+    },
+    watch: {
+      timestamp(n) {
+        this.reset();
+      },
+      format(newVal, oldVal) {
+        this.pause();
+        this.start();
+      }
+    },
+    mounted() {
+      this.init();
+    },
+    methods: {
+      init() {
+        this.reset();
+      },
+      start() {
+        if (this.runing)
+          return;
+        this.runing = true;
+        this.endTime = Date.now() + this.remainTime;
+        this.toTick();
+      },
+      toTick() {
+        if (this.format.indexOf("SSS") > -1) {
+          this.microTick();
+        } else {
+          this.macroTick();
+        }
+      },
+      macroTick() {
+        this.clearTimeout();
+        this.timer = setTimeout(() => {
+          const remain = this.getRemainTime();
+          if (!isSameSecond(remain, this.remainTime) || remain === 0) {
+            this.setRemainTime(remain);
+          }
+          if (this.remainTime !== 0) {
+            this.macroTick();
+          }
+        }, 30);
+      },
+      microTick() {
+        this.clearTimeout();
+        this.timer = setTimeout(() => {
+          this.setRemainTime(this.getRemainTime());
+          if (this.remainTime !== 0) {
+            this.microTick();
+          }
+        }, 30);
+      },
+      getRemainTime() {
+        return Math.max(this.endTime - Date.now(), 0);
+      },
+      setRemainTime(remain) {
+        this.remainTime = remain;
+        const timeData = parseTimeData(remain);
+        this.$emit("change", timeData);
+        this.formattedTime = parseFormat(this.format, timeData);
+        if (remain <= 0) {
+          this.pause();
+          this.$emit("end");
+          this.$emit("finish");
+        }
+      },
+      reset() {
+        this.pause();
+        this.remainTime = this.timestamp;
+        this.setRemainTime(this.remainTime);
+        if (this.autoStart) {
+          this.start();
+        }
+      },
+      pause() {
+        this.runing = false;
+        this.clearTimeout();
+      },
+      clearTimeout() {
+        clearTimeout(this.timer);
+        this.timer = null;
+      }
+    },
+    beforeUnmount() {
+      this.clearTimeout();
+    }
+  };
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "u-count-down" }, [
+      vue.renderSlot(_ctx.$slots, "default", {}, () => [
+        vue.createElementVNode("text", {
+          class: "u-count-down__text",
+          style: vue.normalizeStyle($props.customStyle)
+        }, vue.toDisplayString($data.formattedTime), 5)
+      ])
     ]);
   }
-  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1], ["__scopeId", "data-v-c2027a7c"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/uni_modules/vk-uview-ui/components/u-modal/u-modal.vue"]]);
-  const _sfc_main$2 = /* @__PURE__ */ vue.defineComponent({
+  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$2], ["__file", "D:/app/auction_uniapp/src/uni_modules/vk-uview-ui/components/u-count-down/u-count-down.vue"]]);
+  const _sfc_main$3 = /* @__PURE__ */ vue.defineComponent({
     __name: "productInfo",
     setup(__props) {
-      const show = vue.ref(false);
-      const content = "\u4E1C\u4E34\u78A3\u77F3\uFF0C\u4EE5\u89C2\u6CA7\u6D77";
+      var bidShow = vue.ref(false);
+      const timestamp = vue.reactive({
+        diff: 0
+      });
+      const bids = vue.reactive({
+        amount: "",
+        productId: "",
+        secret: "",
+        weiValue: 0
+      });
       const productInfo = vue.reactive({
         id: 0,
         name: "",
         category: "",
         imageLink: "",
-        descLink: "",
+        description: "",
         auctionStartTime: "",
         auctionEndTime: "",
         startPrice: 0,
         status: "",
         conditions: ""
       });
+      const onBids = () => {
+        bids.productId = routerOption.id;
+        formatAppLog("log", "at pages/product/productInfo.vue:60", bids);
+        bid(bids).then((res) => {
+          formatAppLog("log", "at pages/product/productInfo.vue:62", res);
+          bidShow.value = false;
+        });
+      };
       const routerOption = vue.reactive({
         id: "",
         auctionStates: ""
       });
       onLoad((option) => {
-        formatAppLog("log", "at pages/product/productInfo.vue:45", option);
+        formatAppLog("log", "at pages/product/productInfo.vue:72", option);
         routerOption.id = option.id;
         routerOption.auctionStates = option.auctionStates;
         if (routerOption.id != "") {
           getProductById(routerOption.id).then((res) => {
-            formatAppLog("log", "at pages/product/productInfo.vue:51", res.data);
+            formatAppLog("log", "at pages/product/productInfo.vue:78", res.data);
             const product = res.data;
             productInfo.id = product.id;
             productInfo.name = product.name;
-            productInfo.descLink = product.descLink;
+            productInfo.description = product.description;
             productInfo.startPrice = product.startPrice;
-            productInfo.imageLink = product.imageLink;
+            productInfo.imageLink = config$1.base_url + product.imageLink;
             productInfo.auctionEndTime = product.auctionEndTime;
             productInfo.auctionStartTime = product.auctionStartTime;
             timeFn(product.auctionEndTime);
@@ -24566,9 +24491,10 @@ This will fail in production.`);
         var dateEnd = new Date();
         var dateDiff = dateBegin.getTime() - dateEnd.getTime();
         if (dateDiff <= 0) {
-          formatAppLog("log", "at pages/product/productInfo.vue:72", "\u7ED3\u675F");
+          formatAppLog("log", "at pages/product/productInfo.vue:99", "\u7ED3\u675F");
         } else {
-          formatAppLog("log", "at pages/product/productInfo.vue:74", dateDiff);
+          timestamp.diff = dateDiff;
+          formatAppLog("log", "at pages/product/productInfo.vue:102", dateDiff);
           var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1e3));
           var leave1 = dateDiff % (24 * 3600 * 1e3);
           var hours = Math.floor(leave1 / (3600 * 1e3));
@@ -24576,10 +24502,10 @@ This will fail in production.`);
           var minutes = Math.floor(leave2 / (60 * 1e3));
           var leave3 = leave2 % (60 * 1e3);
           var seconds = Math.round(leave3 / 1e3);
-          formatAppLog("log", "at pages/product/productInfo.vue:84", " \u76F8\u5DEE " + dayDiff + "\u5929 " + hours + "\u5C0F\u65F6 " + minutes + " \u5206\u949F" + seconds + " \u79D2");
+          formatAppLog("log", "at pages/product/productInfo.vue:112", " \u76F8\u5DEE " + dayDiff + "\u5929 " + hours + "\u5C0F\u65F6 " + minutes + " \u5206\u949F" + seconds + " \u79D2");
           formatAppLog(
             "log",
-            "at pages/product/productInfo.vue:85",
+            "at pages/product/productInfo.vue:113",
             dateDiff + "\u65F6\u95F4\u5DEE\u7684\u6BEB\u79D2\u6570",
             dayDiff + "\u8BA1\u7B97\u51FA\u76F8\u5DEE\u5929\u6570",
             leave1 + "\u8BA1\u7B97\u5929\u6570\u540E\u5269\u4F59\u7684\u6BEB\u79D2\u6570",
@@ -24590,9 +24516,13 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_image = resolveEasycom(vue.resolveDynamicComponent("u-image"), __easycom_0$5);
-        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_1$3);
-        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_2);
+        const _component_u_image = resolveEasycom(vue.resolveDynamicComponent("u-image"), __easycom_0);
+        const _component_u_count_down = resolveEasycom(vue.resolveDynamicComponent("u-count-down"), __easycom_1);
+        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_2$1);
+        const _component_u_input = resolveEasycom(vue.resolveDynamicComponent("u-input"), __easycom_3$1);
+        const _component_u_form_item = resolveEasycom(vue.resolveDynamicComponent("u-form-item"), __easycom_4$1);
+        const _component_u_form = resolveEasycom(vue.resolveDynamicComponent("u-form"), __easycom_5$1);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6$1);
         return vue.openBlock(), vue.createElementBlock("view", { class: "productInfo" }, [
           vue.createVNode(_component_u_image, {
             width: "100%",
@@ -24600,12 +24530,20 @@ This will fail in production.`);
             src: productInfo.imageLink
           }, null, 8, ["src"]),
           vue.createElementVNode("view", null, "\u3010\u540D\u79F0\u3011" + vue.toDisplayString(productInfo.name), 1),
+          vue.createElementVNode("view", {
+            innerHTML: productInfo.description
+          }, null, 8, ["innerHTML"]),
+          vue.createElementVNode("view", null, [
+            vue.createElementVNode("view", { style: { "display": "inline-block" } }, "\u3010\u5012\u8BA1\u65F6\u3011"),
+            vue.createVNode(_component_u_count_down, {
+              timestamp: timestamp.diff,
+              style: { "display": "inline-block" }
+            }, null, 8, ["timestamp"])
+          ]),
           vue.createElementVNode("view", null, "\u3010\u8D77\u62CD\u4EF7\u683C\u3011" + vue.toDisplayString(productInfo.startPrice), 1),
-          vue.createElementVNode("view", null, vue.toDisplayString(productInfo.descLink), 1),
-          vue.createElementVNode("view", null, vue.toDisplayString(productInfo.auctionStartTime) + "-" + vue.toDisplayString(productInfo.auctionEndTime), 1),
           vue.createVNode(_component_u_button, {
             type: "error",
-            onClick: _cache[0] || (_cache[0] = ($event) => show.value = true),
+            onClick: _cache[0] || (_cache[0] = ($event) => vue.isRef(bidShow) ? bidShow.value = true : bidShow = true),
             disabled: routerOption.auctionStates != 1
           }, {
             default: vue.withCtx(() => [
@@ -24613,21 +24551,236 @@ This will fail in production.`);
             ]),
             _: 1
           }, 8, ["disabled"]),
-          vue.createVNode(_component_u_modal, {
-            modelValue: show.value,
-            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => show.value = $event),
-            content
-          }, null, 8, ["modelValue"])
+          vue.createVNode(_component_u_popup, {
+            modelValue: vue.unref(bidShow),
+            "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => vue.isRef(bidShow) ? bidShow.value = $event : bidShow = $event),
+            mode: "bottom",
+            "border-radius": "14",
+            width: "100%",
+            height: "700rpx"
+          }, {
+            default: vue.withCtx(() => [
+              vue.createVNode(_component_u_form, {
+                model: bids,
+                "label-position": "top"
+              }, {
+                default: vue.withCtx(() => [
+                  vue.createVNode(_component_u_form_item, { label: "\u51FA\u4EF7" }, {
+                    default: vue.withCtx(() => [
+                      vue.createVNode(_component_u_input, {
+                        modelValue: bids.amount,
+                        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => bids.amount = $event),
+                        type: "number"
+                      }, null, 8, ["modelValue"])
+                    ]),
+                    _: 1
+                  }),
+                  vue.createVNode(_component_u_form_item, { label: "\u52A0\u5BC6\u5B57\u7B26" }, {
+                    default: vue.withCtx(() => [
+                      vue.createVNode(_component_u_input, {
+                        modelValue: bids.secret,
+                        "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => bids.secret = $event)
+                      }, null, 8, ["modelValue"])
+                    ]),
+                    _: 1
+                  }),
+                  vue.createVNode(_component_u_form_item, { label: "\u4FDD\u8BC1\u91D1" }, {
+                    default: vue.withCtx(() => [
+                      vue.createVNode(_component_u_input, {
+                        modelValue: bids.weiValue,
+                        "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => bids.weiValue = $event)
+                      }, null, 8, ["modelValue"])
+                    ]),
+                    _: 1
+                  })
+                ]),
+                _: 1
+              }, 8, ["model"]),
+              vue.createVNode(_component_u_button, {
+                type: "success",
+                onClick: onBids
+              }, {
+                default: vue.withCtx(() => [
+                  vue.createTextVNode("\u63D0\u4EA4")
+                ]),
+                _: 1
+              })
+            ]),
+            _: 1
+          }, 8, ["modelValue"])
         ]);
       };
     }
   });
-  var PagesProductProductInfo = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-4ed8efc9"], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/pages/product/productInfo.vue"]]);
-  const _sfc_main$1 = {};
-  function _sfc_render(_ctx, _cache) {
+  var PagesProductProductInfo = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-4ed8efc9"], ["__file", "D:/app/auction_uniapp/src/pages/product/productInfo.vue"]]);
+  const _sfc_main$2 = {};
+  function _sfc_render$1(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("view", null, " error! ");
   }
-  var PagesErrorError = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/pages/error/error.vue"]]);
+  var PagesErrorError = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "D:/app/auction_uniapp/src/pages/error/error.vue"]]);
+  const _sfc_main$1 = {
+    data() {
+      return {
+        percent: 0,
+        updateBtn: true,
+        cancleBtn: false,
+        data: {
+          describe: "1. \u4FEE\u590D\u5DF2\u77E5\u95EE\u9898<br>2. \u4F18\u5316\u7528\u6237\u4F53\u9A8C",
+          edition_url: "https://mp-281e3ee8-3380-4740-9b6e-11eac5254879.cdn.bspapp.com/cloudstorage/cd703d88-ece5-4823-b922-dfe8b6c7b48c.apk",
+          edition_force: 1,
+          package_type: 0
+        }
+      };
+    },
+    onHide() {
+      this.data.edition_force = 0;
+      uni.navigateBack({
+        delta: 1
+      });
+    },
+    onLoad({ obj }) {
+      this.data = JSON.parse(obj);
+      if (this.data.edition_force == 0) {
+        this.cancleBtn = true;
+      }
+    },
+    onBackPress() {
+      if (this.data.edition_force == 1) {
+        return true;
+      }
+    },
+    methods: {
+      cancel() {
+        uni.navigateBack({
+          delta: 1
+        });
+      },
+      confirm() {
+        if (this.data.package_type == 0) {
+          if (this.data.edition_url.includes(".apk")) {
+            this.updateBtn = false;
+            this.cancleBtn = false;
+            this.download();
+          } else {
+            this.data.edition_force = 0;
+            plus.runtime.openURL(this.data.edition_url);
+            uni.navigateBack({
+              delta: 1
+            });
+          }
+        } else {
+          this.updateBtn = false;
+          this.cancleBtn = false;
+          this.download();
+        }
+      },
+      download() {
+        let package_type = this.data.package_type;
+        let that = this;
+        const downloadTask = uni.downloadFile({
+          url: this.data.edition_url,
+          success: (res) => {
+            if (res.statusCode === 200) {
+              plus.runtime.install(
+                res.tempFilePath,
+                {
+                  force: true
+                },
+                function() {
+                  if (package_type == 1) {
+                    plus.runtime.restart();
+                  }
+                },
+                function(e) {
+                  that.data.edition_force = 0;
+                  uni.showToast({
+                    title: e.message,
+                    icon: "none",
+                    duration: 2500
+                  });
+                  setTimeout(() => {
+                    uni.navigateBack();
+                  }, 2e3);
+                }
+              );
+              if (package_type == 0) {
+                this.data.edition_force = 0;
+                uni.navigateBack();
+              }
+            }
+          }
+        });
+        downloadTask.onProgressUpdate((res) => {
+          this.percent = res.progress;
+        });
+      }
+    }
+  };
+  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "mask flex-center" }, [
+      vue.createElementVNode("view", { class: "content botton-radius" }, [
+        vue.createElementVNode("view", { class: "content-top" }, [
+          vue.createElementVNode("text", { class: "content-top-text" }, "\u53D1\u73B0\u65B0\u7248\u672C"),
+          vue.createElementVNode("image", {
+            class: "content-top",
+            style: { "top": "0" },
+            width: "100%",
+            height: "100%",
+            src: "/uni_modules/rt-uni-update/static/bg_top.png"
+          })
+        ]),
+        vue.createElementVNode("view", { class: "content-header" }),
+        vue.createElementVNode("view", { class: "content-body" }, [
+          vue.createElementVNode("view", { class: "title" }, [
+            vue.createElementVNode("text", null, "\u66F4\u65B0\u5185\u5BB9")
+          ]),
+          vue.createElementVNode("view", { class: "body" }, [
+            vue.createElementVNode("scroll-view", {
+              class: "box-des-scroll",
+              "scroll-y": "true"
+            }, [
+              vue.createElementVNode("rich-text", {
+                nodes: $data.data.describe
+              }, null, 8, ["nodes"])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "footer flex-center" }, [
+            !$data.updateBtn ? (vue.openBlock(), vue.createElementBlock("view", {
+              key: 0,
+              class: "progress-box flex-column"
+            }, [
+              vue.createElementVNode("progress", {
+                class: "progress",
+                "border-radius": "35",
+                percent: $data.percent,
+                activeColor: "#3DA7FF",
+                "show-info": "",
+                "stroke-width": "10"
+              }, null, 8, ["percent"]),
+              vue.createCommentVNode(' <u-line-progress :striped="true" :percent="percent" :striped-active="true"></u-line-progress> '),
+              vue.createElementVNode("view", null, [
+                vue.createElementVNode("text", null, "\u6B63\u5728\u4E0B\u8F7D\uFF0C\u8BF7\u7A0D\u540E")
+              ])
+            ])) : vue.createCommentVNode("v-if", true),
+            $data.updateBtn ? (vue.openBlock(), vue.createElementBlock("button", {
+              key: 1,
+              class: "content-button",
+              style: { "border": "none", "color": "#fff" },
+              plain: "",
+              onClick: _cache[0] || (_cache[0] = (...args) => $options.confirm && $options.confirm(...args))
+            }, "\u7ACB\u5373\u5347\u7EA7")) : vue.createCommentVNode("v-if", true)
+          ])
+        ]),
+        $data.cancleBtn ? (vue.openBlock(), vue.createElementBlock("image", {
+          key: 0,
+          class: "close-img",
+          src: "/uni_modules/rt-uni-update/static/app_update_close.png",
+          onClick: _cache[1] || (_cache[1] = vue.withModifiers((...args) => $options.cancel && $options.cancel(...args), ["stop"]))
+        })) : vue.createCommentVNode("v-if", true)
+      ])
+    ]);
+  }
+  var Uni_modulesRtUniUpdateComponentsRtUniUpdateRtUniUpdate = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "D:/app/auction_uniapp/src/uni_modules/rt-uni-update/components/rt-uni-update/rt-uni-update.vue"]]);
   __definePage("pages/login/login", PagesLoginLogin);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/user/user", PagesUserUser);
@@ -24637,23 +24790,85 @@ This will fail in production.`);
   __definePage("pages/product/newProduct", PagesProductNewProduct);
   __definePage("pages/product/productInfo", PagesProductProductInfo);
   __definePage("pages/error/error", PagesErrorError);
+  __definePage("uni_modules/rt-uni-update/components/rt-uni-update/rt-uni-update", Uni_modulesRtUniUpdateComponentsRtUniUpdateRtUniUpdate);
+  function silenceUpdate(url2) {
+    uni.downloadFile({
+      url: url2,
+      success: (res) => {
+        if (res.statusCode === 200) {
+          plus.runtime.install(
+            res.tempFilePath,
+            {
+              force: true
+            },
+            function() {
+              uni.showModal({
+                title: "\u66F4\u65B0\u63D0\u793A",
+                content: "\u65B0\u7248\u672C\u5DF2\u7ECF\u51C6\u5907\u597D\uFF0C\u8BF7\u91CD\u542F\u5E94\u7528",
+                showCancel: false,
+                success: function(res2) {
+                  if (res2.confirm) {
+                    plus.runtime.restart();
+                  }
+                }
+              });
+            },
+            function(e) {
+              formatAppLog("error", "at uni_modules/rt-uni-update/js_sdk/silence-update.js:25", "install fail...");
+            }
+          );
+        }
+      }
+    });
+  }
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
     __name: "App",
     setup(__props) {
       onLaunch(() => {
-        formatAppLog("log", "at App.vue:4", "App Launch");
+        formatAppLog("log", "at App.vue:5", "App Launch");
       });
       onShow(() => {
-        formatAppLog("log", "at App.vue:7", "App Show");
+        formatAppLog("log", "at App.vue:8", "App Show");
+        setTimeout(() => {
+          getUpdate();
+        }, 4e3);
       });
       onHide(() => {
-        formatAppLog("log", "at App.vue:10", "App Hide");
+        formatAppLog("log", "at App.vue:16", "App Hide");
       });
+      const getUpdate = () => {
+        let data = {
+          describe: "1. \u4FEE\u590D\u5DF2\u77E5\u95EE\u9898<br>2. \u4F18\u5316\u7528\u6237\u4F53\u9A8C",
+          edition_url: "http://cdn.ut.tj.cn/app/__UNI__D0D08F0.wgt",
+          edition_force: 0,
+          package_type: 1,
+          edition_issue: 1,
+          edition_number: 100,
+          edition_name: "1.0.2",
+          edition_silence: 0,
+          flag: true
+        };
+        if (data.flag) {
+          if (data.package_type == 1 && data.edition_silence == 1) {
+            silenceUpdate(data.edition_url);
+          } else {
+            uni.navigateTo({
+              url: "/uni_modules/rt-uni-update/components/rt-uni-update/rt-uni-update?obj=" + JSON.stringify(data)
+            });
+          }
+        } else {
+          uni.showModal({
+            title: "\u63D0\u793A",
+            content: "\u5DF2\u662F\u6700\u65B0\u7248\u672C",
+            showCancel: false
+          });
+        }
+      };
       return () => {
       };
     }
   });
-  var App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "C:/Users/Administrator/Desktop/\u6BD5\u4E1A\u8BBE\u8BA1/auction-uniapp/src/App.vue"]]);
+  var App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "D:/app/auction_uniapp/src/App.vue"]]);
   var mixin = {
     data() {
       return {};

@@ -3,13 +3,16 @@
 	<Avatar/>
 	<u-form :model="form" ref="uForm" style="margin: 10rpx;">
 		<u-form-item>
-			<u-input v-model="form.username" placeholder="请输入账号" />
+			<u-input v-model="form.username" placeholder="请输入电话号码" />
 		</u-form-item>
 		<u-form-item>
 			<u-input type="password" v-model="form.password" placeholder="请输入密码" />
 		</u-form-item>
+	<!-- 	<u-form-item>
+			<u-input v-model="form.code" placeholder="请输入验证码" />
+		</u-form-item> -->
 	</u-form>
-	<u-button type="primary" @click="toLogin" style="margin: 10rpx;">注册</u-button>
+	<u-button type="primary" @click="toRegister" style="margin: 10rpx;">注册</u-button>
 </template>
 
 <script lang="ts" setup>
@@ -23,9 +26,9 @@ import { config } from '@/config';
 		avatar: ""
 	})
 
-	const toLogin = () => {
+	const toRegister = () => {
 		if (form.username == null || form.password.length <= 5) {
-			console.log("请输入正确的账号与密码");
+			console.log("请输入用户名与密码");
 		} else {
 			uni.getStorage({
 				key: 'avatar',

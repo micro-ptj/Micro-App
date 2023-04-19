@@ -1,31 +1,48 @@
 <template>
 	<view class="productInfo">
 		<u-image width="100%" height="300rpx" :src="productInfo.imageLink"></u-image>
-		<view>【名称】{{productInfo.name}}</view>
-		<view>【描述】{{productInfo.descLink}}</view>
+		<view style="font-size: medium; font-weight: 550;">{{productInfo.name}}</view>
+		<view >起拍价：{{productInfo.startPrice}}</view>
 		<view>
-			<view style="display: inline-block;">【倒计时】</view>
-			<u-count-down :timestamp="timestamp.diff" style="display: inline-block;"></u-count-down>
+			 <view v-html="productInfo.description"></view>
 		</view>
-		<view>【起拍价格】{{productInfo.startPrice}}</view>
-		<u-button type="error" @click="bidShow = true" :disabled="routerOption.auctionStates != 1">竞拍</u-button>
-		<u-popup v-model="bidShow" mode="bottom" border-radius="14" width="100%" height="700rpx">
-			<u-form :model="bids" label-position="top">
-				<u-form-item label="出价"><u-input v-model="bids.amount" type="number" /></u-form-item>
-				<u-form-item label="加密字符"><u-input v-model="bids.secret" /></u-form-item>
-				<u-form-item label="保证金"><u-input v-model="bids.weiValue" /></u-form-item>
-			</u-form>
-			<u-button type="success" @click="onBids">提交</u-button>
+		
+		<view class="bidBtn-box">
+			<u-row>
+				<u-col :span="5">
+					<u-row>
+						<view style="text-align: center; font-weight: 600;">距竞拍结束</view>
+					</u-row>
+					<u-row>
+						<u-count-down :timestamp="timestamp.diff" style="font-size: medium; font-weight: 600;"></u-count-down>
+					</u-row>
+				</u-col>
+				<u-col :span="7">
+					<u-button type="error" @click="bidShow = true" :disabled="routerOption.auctionStates != 1">竞拍</u-button>
+				</u-col>
+			</u-row>
+		</view>
+		
+		<u-popup v-model="bidShow" mode="bottom" width="100%" height="500rpx">
+			<view class="price-box">起拍价：{{productInfo.startPrice}}</view>
+			<u-col offset="4" :span="4">
+				<u-form :model="bids" class="form-box">
+					<u-form-item :border-bottom="false"><u-input :border="true" v-model="bids.amount" type="number" style="text-align: center;"/></u-form-item>
+				</u-form>
+			</u-col>
+			
+			<u-button class="bidbtn-box" type="error" @click="onBids">确定</u-button>
 		</u-popup>
 	</view>
 </template>
 
 
 <script lang="ts" setup>
+import { config } from "@/config";
 import { bid, getProductById } from '@/network/api';
 import { BidParam } from '@/type/request';
 import { Product } from '@/type/response';
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onReady } from '@dcloudio/uni-app';
 import { reactive, ref } from 'vue';
 
 var bidShow = ref<boolean>(false)
@@ -36,9 +53,7 @@ const timestamp = reactive({
 
 const bids = reactive<BidParam>({
   amount: "",
-  productId: "",
-  secret: "",
-  weiValue: 0
+  goodsId: "",
 })
 
 const productInfo = reactive<Product>({
@@ -46,7 +61,7 @@ const productInfo = reactive<Product>({
 	name: "",
 	category: "",
 	imageLink: "",
-	descLink: "",
+	description: "",
 	auctionStartTime: "",
 	auctionEndTime: "",
 	startPrice: 0,
@@ -55,11 +70,24 @@ const productInfo = reactive<Product>({
 })
 
 const onBids = () => {
-	bids.productId = routerOption.id
+	bids.goodsId = routerOption.id
 	console.log(bids);
-	bid(bids).then(res => {
+	bid(bids).then((res:any) => {
 		console.log(res);
-		bidShow.value = false;
+		if(res.code == 200){
+			uni.showToast({
+			    title: '出价成功',
+			    duration: 1000
+			});
+			bidShow.value = false;
+			setTimeout(() => {
+				uni.reLaunch({
+					url: '/pages/order/index'
+				})
+			}, 1000);
+			
+		}
+		
 	})
 }
 
@@ -78,9 +106,9 @@ onLoad((option) => {
 			const product:Product = res.data
 			productInfo.id = product.id
 			productInfo.name = product.name
-			productInfo.descLink = product.descLink
+			productInfo.description = product.description
 			productInfo.startPrice = product.startPrice
-			productInfo.imageLink = product.imageLink
+			productInfo.imageLink = config.base_url + product.imageLink
 			productInfo.auctionEndTime = product.auctionEndTime
 			productInfo.auctionStartTime = product.auctionStartTime
 			timeFn(product.auctionEndTime)
@@ -121,5 +149,30 @@ function timeFn(d1:string) {//di作为一个变量传进来
 <style lang="scss" scoped>
 	.productInfo{
 		margin: 10rpx;
+	}
+	.bidBtn-box{
+		position: fixed;
+		/*下面的属性根据实际需求更改*/
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	.price-box{
+		text-align: center;
+		font-size: large;
+		font-weight: 600;
+		padding: 20rpx;
+	}
+	.bidbtn-box{
+		position: fixed;
+		/*下面的属性根据实际需求更改*/
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	.form-box{
+		margin-top: 20rpx;
+		padding: 3rpx;
+		
 	}
 </style>

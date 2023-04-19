@@ -1,19 +1,21 @@
 import {request} from '@/network/http'
-import { BidParam, ProductParam } from "@/type/request";
-
-
-// uni.getStorage({
-// 	key: 'token',
-// 	success: function (res: any) {
-// 		uni.getStorageSync('token') = res.data.tokenHead + " " + res.data.token;
-// 	}
-// });
-
+import { BidParam, ProductParam, IdentityParam } from "@/type/request";
 
 
 export const logout = () => {
 	return request({
-		url: "logout",
+		url: "/app/logout",
+		method: "GET",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		}
+	})
+}
+
+export const verify = () => {
+	return request({
+		url: "/app/verify",
 		method: "GET",
 		header: {
 			'Content-Type': 'application/x-www-form-urlencoded',
@@ -24,10 +26,9 @@ export const logout = () => {
 
 export const getUserInfo = () => {
 	return request({
-		url: "admin/userInfo",
+		url: "/app/userInfo",
 		method: "GET",
 		header: {
-			'Content-Type': 'application/x-www-form-urlencoded',
 			'Authorization': uni.getStorageSync('token')
 		}
 	})
@@ -35,7 +36,7 @@ export const getUserInfo = () => {
 
 export const getBalance = () => {
 	return request({
-		url: "admin/getBalance",
+		url: "/geth/balance",
 		method: "GET",
 		header: {
 			'Content-Type': 'application/x-www-form-urlencoded',
@@ -46,7 +47,7 @@ export const getBalance = () => {
 
 export const addProduct = (product: ProductParam) => {
 	return request({
-		url: "contract/addProduct",
+		url: "/contract/addProduct",
 		method: "POST",
 		data: product,
 		header: {
@@ -58,7 +59,19 @@ export const addProduct = (product: ProductParam) => {
 
 export const bid = (bids: BidParam) => {
 	return request({
-		url: "contract/bid",
+		url: "/app/bid/bids",
+		method: "POST",
+		data: bids,
+		header: {
+			'Content-Type': 'application/json',
+			'Authorization': uni.getStorageSync('token')
+		}
+	})
+}
+
+export const revealBids = (bids: BidParam) => {
+	return request({
+		url: "/contract/revealBid",
 		method: "POST",
 		data: bids,
 		header: {
@@ -69,9 +82,22 @@ export const bid = (bids: BidParam) => {
 }
 
 
-export const getProduct = () => {
+export const getProduct = (query:any) => {
 	return request({
-		url: "product/getProduct",
+		url: "/app/goods/list",
+		method: "GET",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		},
+		data: query
+	})
+}
+
+
+export const gethVersion = () => {
+	return request({
+		url: "/geth/gethVersion",
 		method: "GET",
 		header: {
 			'Content-Type': 'application/x-www-form-urlencoded',
@@ -82,7 +108,7 @@ export const getProduct = () => {
 
 export const totalBids = (id:number) => {
 	return request({
-		url: "contract/totalBids/" + id,
+		url: "/contract/totalBids/" + id,
 		method: "GET",
 		header: {
 			'Content-Type': 'application/x-www-form-urlencoded',
@@ -93,11 +119,74 @@ export const totalBids = (id:number) => {
 
 export const getProductById = (id:string) => {
 	return request({
-		url: "contract/getProduct/" + id,
+		url: "/app/goods/byId/" + id,
 		method: "GET",
 		header: {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'Authorization': uni.getStorageSync('token')
 		}
+	})
+}
+
+export const receipt = (query:any) => {
+	return request({
+		url: "/geth/receipt",
+		method: "POST",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		},
+		data: query
+	})
+}
+
+/*---------------------------------bid---------------------------------*/
+export const getBid = (query:any) => {
+	return request({
+		url: "/app/bid/list",
+		method: "GET",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		},
+		data: query
+	})
+}
+
+/*---------------------------------order---------------------------------*/
+export const getOrder = (query:any) => {
+	return request({
+		url: "/app/order/list",
+		method: "GET",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		},
+		data: query
+	})
+}
+
+/*---------------------------------dict---------------------------------*/
+export function getDicts(dictType: string) {
+  return request({
+    url: '/system/dict/data/type/' + dictType,
+    method: 'GET',
+	header: {
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Authorization': uni.getStorageSync('token')
+	},
+  })
+}
+
+/*---------------------------------code---------------------------------*/
+export function identityVerify(query: IdentityParam) {
+	return request({
+		url: '/app/identityVerify',
+		method: 'POST',
+		header: {
+			'Content-Type': 'application/json',
+			'Authorization': uni.getStorageSync('token')
+		},
+		data: query
 	})
 }

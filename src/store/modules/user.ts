@@ -24,6 +24,7 @@ export const useUserStore = defineStore({
         },
 		async setBalance() {
 			const userBalance:any = await getBalance()
+			console.log(userBalance);
 			this.money = userBalance.data
 		}
     }

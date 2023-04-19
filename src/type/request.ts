@@ -1,6 +1,7 @@
 export interface LoginParam {
-    username: string;
+    phone: number;
     password: string;
+	code: number;
 }
 
 export interface RegisterParam {
@@ -11,10 +12,20 @@ export interface RegisterParam {
 
 export interface BidParam {
 	amount: string;
-	productId: string;
-	secret: string;
-	weiValue: number;
+	goodsId: string;
 }
+
+export interface IdentityParam {
+	name: string;
+	idCard: string;
+	phone: number;
+}
+
+export interface QueryParams {
+	pageNum: number,
+	pageSize: number
+}
+
 
 export interface ProductParam {
 	name: string;

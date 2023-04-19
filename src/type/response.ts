@@ -4,22 +4,23 @@ export interface TokenHeader {
 
 
 export interface UseInfo {
-    id: number;
-    username: string;
+	userId: number;
+	username: string;
+	phone: number;
+	name: string;
+	sex: number;
 	avatar: string;
-    address: string;
-    privateKey: string;
-    publicKey: string;
-    createTime: string;
-    updateTime: string;
+	address: string;
+	balance: number;
 }
+
 
 export interface Product {
     id: number;
     name: string;
     category: string;
     imageLink: string;
-    descLink: string;
+    description: string;
     auctionStartTime: string;
     auctionEndTime: string;
     startPrice: number;
@@ -27,3 +28,23 @@ export interface Product {
     conditions: string;
 }
 
+export interface Order {
+	id: number;
+	name: string;
+	image: string;
+	category: number;
+	amount: string;
+	orderTime: string;
+	status: number;
+	trackingNum: string;
+}
+
+export interface Bid {
+	id: number;
+	name: string;
+	image: string;
+	category: number;
+	amount: string;
+	bidTime: string;
+	status: number;
+}

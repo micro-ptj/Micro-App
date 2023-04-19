@@ -1,5 +1,7 @@
 const config = {
-	// base_url: "http://175.178.17.109:8080/"
-	base_url: "http://10.11.86.74:8080/"
+//	base_url: "http://micro.xpit.top",
+	// base_url: "/api",
+	base_url: "http://192.168.99.3:8080",
+	version: "1.0.0"
 }
 export {config}

@@ -5,7 +5,7 @@
     "iPad"
   ],
   "id": "__UNI__6699B79",
-  "name": "auction",
+  "name": "micro",
   "version": {
     "name": "1.0.0",
     "code": "100"
@@ -40,7 +40,10 @@
     "statusbar": {
       "immersed": "supportedDevice",
       "style": "light",
-      "background": "#F8F8F8"
+      "background": "#630"
+    },
+    "compatible": {
+      "ignoreVersion": true
     },
     "usingComponents": true,
     "nvueStyleCompiler": "uni-app",
@@ -149,6 +152,12 @@
           "iconPath": "/static/iconfont/product.png",
           "selectedIconPath": "/static/iconfont/product-activity.png",
           "text": "商品"
+        },
+        {
+          "pagePath": "pages/order/index",
+          "iconPath": "/static/iconfont/product.png",
+          "selectedIconPath": "/static/iconfont/product-activity.png",
+          "text": "订单"
         },
         {
           "pagePath": "pages/user/user",

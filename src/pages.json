@@ -9,6 +9,29 @@
 
 		},
 		{
+			"path": "pages/login/loginv1",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+
+		},
+		{
+			"path": "pages/user/verify",
+			"style": {
+				"navigationBarTitleText": "实名认证",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/order/bid",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "uni-app"
@@ -56,11 +79,20 @@
             "path" : "pages/product/productInfo",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "详情",
                 "enablePullDownRefresh": false
             }
-            
+
         }
+		,{
+		    "path" : "pages/order/order",
+		    "style" :
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+
+		}
         ,{
             "path" : "pages/error/error",
             "style" :                                                                                    
@@ -69,13 +101,49 @@
                 "enablePullDownRefresh": false
             }
             
+        },
+		{
+			"path": "uni_modules/rt-uni-update/components/rt-uni-update/rt-uni-update",
+			"style": {
+				"disableScroll": true,
+				"app-plus": {
+					"backgroundColorTop": "transparent",
+					"background": "transparent",
+					"titleNView": false,
+					"scrollIndicator": false,
+					"popGesture": "none",
+					"animationType": "fade-in",
+					"animationDuration": 200
+
+				}
+			}
+		}
+        ,{
+            "path" : "pages/order/index",
+            "style" :
+            {
+                "navigationBarTitleText": "订单",
+                "enablePullDownRefresh": false
+            }
+
+        }
+		,{
+            "path" : "pages/setting/setting",
+            "style" :
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+
         }
     ],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		// "navigationBarTextStyle": "black",
+		// "navigationBarTitleText": "uni-app",
+		// "navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor":"#630",
+		"navigationBarTextStyle":"white"  //状态栏字体颜色
 	},
 	"tabBar": {
 		"color": "#000000",
@@ -87,6 +155,12 @@
 				"iconPath": "static/iconfont/product.png",
 				"selectedIconPath": "static/iconfont/product-activity.png",
 				"text": "商品"
+			},
+			{
+				"pagePath": "pages/order/index",
+				"iconPath": "static/iconfont/product.png",
+				"selectedIconPath": "static/iconfont/product-activity.png",
+				"text": "订单"
 			},
 			{
 				"pagePath": "pages/user/user",

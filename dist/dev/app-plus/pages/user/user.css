@@ -870,5 +870,43 @@
   line-height: 1;
 }
 .content-user[data-v-1198f63b] {
-  margin: 1.25rem;
+  border-radius: 0.9375rem;
+  margin-left: 0.9375rem;
+  margin-right: 0.9375rem;
+  padding-left: 1.25rem;
+  padding-top: 0.625rem;
+  padding-bottom: 2.5rem;
+  background-color: #ccc;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.content-user-avatar[data-v-1198f63b],
+.content-user-info[data-v-1198f63b] {
+  margin-right: 0.9375rem;
+}
+.user-top[data-v-1198f63b] {
+  margin: 0.3125rem;
+  font-size: x-medium;
+  font-weight: 600;
+}
+.user-card[data-v-1198f63b] {
+  margin-left: 1.875rem;
+  margin-right: 1.875rem;
+  background-color: #757575;
+  color: #fff;
+  border-radius: 0.9375rem;
+  box-shadow: 0 0 1.25rem #000;
+  transform: translateY(-30%);
+}
+.user-card uni-view[data-v-1198f63b] {
+  width: 100%;
+  display: inline-block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  height: auto;
+  font-size: medium;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  padding-bottom: 0.625rem;
 }

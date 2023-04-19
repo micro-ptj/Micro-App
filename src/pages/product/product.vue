@@ -30,7 +30,6 @@
 					<view class="demo-price">
 						<view class="demo-price-a">ETH {{item.startPrice}}</view>
 						
-						<view class="demo-price-b">已出价{{item.totalBid}}次</view>
 					</view>
 				</view>
 			</template>
@@ -63,7 +62,6 @@
 					<view class="demo-price">
 						<view class="demo-price-a">ETH {{item.startPrice}}</view>
 						
-						<view class="demo-price-b">已出价{{item.totalBid}}次</view>
 					</view>
 				</view>
 			</template>
@@ -72,18 +70,26 @@
 </template>
 
 <script lang="ts" setup>
-import { totalBids } from "@/network/api";
+import { config } from "@/config";
 import {useProductStore} from "@/store/modules/product";
 import { Product } from "@/type/response";
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onReady, onShow } from "@dcloudio/uni-app";
 import { onMounted, computed, ref, reactive, ComputedRef } from 'vue';
 
 const useProductState = useProductStore()
 
+
 onLoad(async() => {
+		await useProductState.changeVal()
 		await useProductState.setProductList()
 		initData()
 	})
+
+// onShow(async() => {
+// 	await useProductState.changeVal()
+// 	await useProductState.setProductList()
+// 	initData()
+// })
 	
 const product: ComputedRef<Product[]> = computed(() => useProductState.getProductList)
 
@@ -92,13 +98,12 @@ interface ProductList {
     name: string;
     category: string;
     imageLink: string;
-    descLink: string;
+    description: string;
     auctionStartTime: string;
     auctionEndTime: string;
     startPrice: number;
     status: string;
     conditions: string;
-	totalBid: number;
 	dataAuctionStates: number
 }
 
@@ -107,8 +112,6 @@ const productList = reactive<ProductList[]>([])
 const initData = async() => {
 	for (var i = 0; i < product.value.length; i++) {
 		console.log(product.value[i].id);
-		const result:any = await totalBids(product.value[i].id)
-		console.log(result.data);
 		var auctionState:number;
 		var auctionStartTimeReplace = replaceDate(product.value[i].auctionStartTime)
 		var auctionEndTimeReplace = replaceDate(product.value[i].auctionEndTime)
@@ -130,14 +133,13 @@ const initData = async() => {
 		productList.push({id: product.value[i].id, 
 			name: product.value[i].name,
 			category: product.value[i].category,
-			imageLink: product.value[i].imageLink,
-			descLink: product.value[i].descLink,
+			imageLink: config.base_url + product.value[i].imageLink,
+			description: product.value[i].description,
 			auctionStartTime: product.value[i].auctionStartTime,
 			auctionEndTime: product.value[i].auctionEndTime,
 			startPrice: product.value[i].startPrice,
 			status: product.value[i].status,
 			conditions: product.value[i].conditions,
-			totalBid: result.data,
 			dataAuctionStates: auctionState
 		})
 	}

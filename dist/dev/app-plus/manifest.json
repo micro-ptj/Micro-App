@@ -5,7 +5,7 @@
     "iPad"
   ],
   "id": "__UNI__6699B79",
-  "name": "auction",
+  "name": "micro",
   "version": {
     "name": "1.0.0",
     "code": "100"
@@ -41,6 +41,9 @@
       "immersed": "supportedDevice",
       "style": "light",
       "background": "#F8F8F8"
+    },
+    "compatible": {
+      "ignoreVersion": true
     },
     "usingComponents": true,
     "nvueStyleCompiler": "uni-app",
