@@ -62,5 +62,5 @@ const getUpdate = () => {
 </script>
 <style lang="scss">
 	@import "./uni_modules/vk-uview-ui/index.scss";
-	@import "@/common/globalClass.css"
+	@import "@/common/globalClass.css";
 </style>

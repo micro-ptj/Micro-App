@@ -48,3 +48,15 @@ export interface Bid {
 	bidTime: string;
 	status: number;
 }
+
+export interface ContentInfo {
+	id: number;
+	amount: number;
+	status: number;
+	time: string;
+	goodsName: string;
+	image: string;
+	category: number;
+	startPrice: number;
+	trackingNum?: any;
+}

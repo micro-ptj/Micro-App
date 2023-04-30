@@ -15,12 +15,27 @@
 			<view class="user-card-balance">ETH：{{user.balance}}</view>
 		</view>
 
-		<u-cell-group>
-			<u-cell-item icon="shopping-cart-fill" title="我的订单" @click="toOrder"></u-cell-item>
+		<u-grid :col="3" :border="false">
+			<u-grid-item @click="toOrder">
+				<u-icon name="shopping-cart-fill" :size="46" color="#DAA569"></u-icon>
+				<view class="grid-text">订单</view>
+			</u-grid-item>
+			<u-grid-item @click="toVerify">
+				<u-icon name="lock-fill" :size="46" color="#DAA569"></u-icon>
+				<view class="grid-text">实名认证</view>
+			</u-grid-item>
+			<u-grid-item @click="toSetting">
+				<u-icon name="grid-fill" :size="46" color="#DAA569"></u-icon>
+				<view class="grid-text">设置</view>
+			</u-grid-item>
+		</u-grid>
+	
+		<!-- <u-cell-group>
+			<u-cell-item icon="shopping-cart-fill" title="我的订单" @click="toOrder"></u-cell-item> -->
 			<!-- <u-cell-item icon="bookmark-fill" title="发布" @click="toProdoctRelease"></u-cell-item> -->
-			<u-cell-item icon="bookmark-fill" title="实名认证" @click="toVerify"></u-cell-item>
+			<!-- <u-cell-item icon="bookmark-fill" title="实名认证" @click="toVerify"></u-cell-item>
 			<u-cell-item icon="setting-fill" title="应用设置" @click="toSetting"></u-cell-item>
-		</u-cell-group>
+		</u-cell-group> -->
 	</view>
 </template>
 
@@ -74,6 +89,11 @@
 </script>
 
 <style lang="scss" scoped>
+		.grid-text {
+			font-size: 28rpx;
+			margin-top: 4rpx;
+			color: $u-type-info;
+		}
 	.content-user {
 		border-radius: 30rpx;
 		margin-left: 30rpx;
@@ -82,7 +102,7 @@
 		padding-top: 20rpx;
 		padding-bottom: 80rpx;
 
-		background-color: #ccc;
+		background-color: #cccccc;
 		display: flex;
 		flex-direction: row;
 		align-items: center;

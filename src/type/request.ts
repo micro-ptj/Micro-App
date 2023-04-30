@@ -1,7 +1,7 @@
 export interface LoginParam {
-    phone: number;
+    phone: string;
     password: string;
-	code: number;
+	code: string;
 }
 
 export interface RegisterParam {
@@ -18,7 +18,7 @@ export interface BidParam {
 export interface IdentityParam {
 	name: string;
 	idCard: string;
-	phone: number;
+	phone: string;
 }
 
 export interface QueryParams {
@@ -36,4 +36,9 @@ export interface ProductParam {
 	auctionEndTime: string;
 	auctionStartTime: string;
 	conditions: string;
+}
+
+export interface TransactionParam {
+	sourceId: string;
+	sourceType: string;
 }

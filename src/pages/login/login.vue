@@ -32,9 +32,9 @@
 	import { LoginParam } from '@/type/request';
 	import { reactive } from 'vue';
 	const form = reactive<LoginParam>({
-		phone: 15391493308,
+		phone: "15391493308",
 		password: "qwer1234",
-		code: null
+		code: ""
 	})
 	const toLogin = () => {
 		if (form.phone == null || form.password.length <= 5) {

@@ -1,5 +1,5 @@
 import {request} from '@/network/http'
-import { BidParam, ProductParam, IdentityParam } from "@/type/request";
+import { BidParam, ProductParam, IdentityParam, TransactionParam } from "@/type/request";
 
 
 export const logout = () => {
@@ -188,5 +188,42 @@ export function identityVerify(query: IdentityParam) {
 			'Authorization': uni.getStorageSync('token')
 		},
 		data: query
+	})
+}
+
+/*---------------------------------code---------------------------------*/
+export function transaction(query: TransactionParam) {
+	return request({
+		url: '/app/transaction/info',
+		method: 'POST',
+		header: {
+			'Content-Type': 'application/json',
+			'Authorization': uni.getStorageSync('token')
+		},
+		data: query
+	})
+}
+
+/*---------------------------------bidInfo---------------------------------*/
+export const bidInfo = (id:string) => {
+	return request({
+		url: "/app/bid/info/" + id,
+		method: "GET",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		}
+	})
+}
+
+/*---------------------------------orderInfo---------------------------------*/
+export const orderInfo = (id:string) => {
+	return request({
+		url: "/app/order/info/" + id,
+		method: "GET",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		}
 	})
 }

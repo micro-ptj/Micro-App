@@ -35,9 +35,9 @@
 	import { reactive, ref } from 'vue';
 
 	const form = reactive<LoginParam>({
-		phone: 15391493308,
-		password: null,
-        code: null
+		phone: "",
+		password: "",
+        code: ""
 	})
 
     const codeTips = ref("获取验证码")

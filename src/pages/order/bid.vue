@@ -9,22 +9,24 @@
 		</view>
 		
 		<view class="bid-box" v-for="(item, index) in bidList">
-			<u-row>
-				<u-col span="6" style="font-size: medium;font-weight: 600;">{{item.name}}</u-col>
-				<u-col span="3" offset="3">
-					<DictTag type="micro_bid_status" :value="item.status"/>
-				</u-col>
-				
-			</u-row>
-			<u-row>
-				<u-col span="2">
-					<u-image border-radius="10rpx" width="110rpx" height="110rpx" :src="setImgUrl(item.image)"></u-image>
-				</u-col>
-				<u-col span="9">
-					<u-row>{{item.amount}}</u-row>
-					<u-row>{{item.bidTime}}</u-row>
-				</u-col>
-			</u-row>
+			<view @click="showContent(item.id)"> 
+				<u-row>
+					<u-col span="6" style="font-size: medium;font-weight: 600;">{{item.name}}</u-col>
+					<u-col span="3" offset="3">
+						<DictTag type="micro_bid_status" :value="item.status"/>
+					</u-col>
+					
+				</u-row>
+				<u-row>
+					<u-col span="2">
+						<u-image border-radius="10rpx" width="110rpx" height="110rpx" :src="setImgUrl(item.image)"></u-image>
+					</u-col>
+					<u-col span="9">
+						<u-row style="color: #ccc;">{{item.amount}}</u-row>
+						<u-row style="color: #ccc;">{{item.bidTime}}</u-row>
+					</u-col>
+				</u-row>
+			</view>
 		</view>
 	</view>
 </template>
@@ -42,8 +44,6 @@ import { config } from '@/config';
 	const bids = reactive<BidParam>({
 	  amount: "",
 	  goodsId: "",
-	  secret: "",
-	  weiValue: 0
 	})
 	const bidList = ref<Bid[]>()
 	const queryParam = reactive<QueryParams>({
@@ -63,7 +63,11 @@ import { config } from '@/config';
 	const setImgUrl = (e: string) => {
 		return config.base_url + e 
 	}
-	
+	const showContent = (e :number) => {
+		uni.navigateTo({
+			url: '/pages/order/contentInfo?id=' + e + '&type=micro_bid'
+		})
+	}
 </script>
 
 <style scoped>
@@ -71,7 +75,6 @@ import { config } from '@/config';
 	margin: 15rpx;
 	padding: 20rpx;
 	border-radius: 10rpx;
-	/* box-shadow: 0 0 15px #fff; */
 	background-color: #fff;
 }
 </style>
