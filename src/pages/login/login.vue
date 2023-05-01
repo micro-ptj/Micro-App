@@ -16,7 +16,7 @@
 			<u-button @click="toLogin" shape="circle" class="submit" type="primary">登录</u-button>
             <u-row style="margin-top:50rpx">
 				<u-col :span="4">
-				<view>新用户注册</view>
+				<view @click="toRegister">新用户注册</view>
 				</u-col>
 				<u-col :span="4" offset="4">
 				<view @click="toLoginCode">验证码登录</view>

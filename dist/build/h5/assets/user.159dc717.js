@@ -1,0 +1,1 @@
+import{O as s,T as t,U as e}from"./index.d4fd57a9.js";import{S as a}from"./index.a84014b3.js";const n=s({id:a.USER,state:()=>({user:{},money:""}),getters:{getUserInfo(){return this.user},getMoney(){return this.money}},actions:{async setUserInfo(){const s=await t();this.user=s.data},async setBalance(){const s=await e();console.log(s),this.money=s.data}}});export{n as u};

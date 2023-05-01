@@ -6,7 +6,7 @@
 			</view>
 			<view class="content-user-info">
 				<view class="user-top">{{user.username}}</view>
-				<view class="user-top">{{user.name != null && user.name != '' ? '已实名' : '未实名'}}</view>
+				<u-tag :text="user.name != null && user.name != '' ? '已实名' : '未实名'" mode="dark" type="info" />
 			</view>
 		</view>
 
@@ -15,20 +15,28 @@
 			<view class="user-card-balance">ETH：{{user.balance}}</view>
 		</view>
 
-		<u-grid :col="3" :border="false">
-			<u-grid-item @click="toOrder">
-				<u-icon name="shopping-cart-fill" :size="46" color="#DAA569"></u-icon>
-				<view class="grid-text">订单</view>
-			</u-grid-item>
-			<u-grid-item @click="toVerify">
-				<u-icon name="lock-fill" :size="46" color="#DAA569"></u-icon>
-				<view class="grid-text">实名认证</view>
-			</u-grid-item>
-			<u-grid-item @click="toSetting">
-				<u-icon name="grid-fill" :size="46" color="#DAA569"></u-icon>
-				<view class="grid-text">设置</view>
-			</u-grid-item>
-		</u-grid>
+		<view class="menu-box">
+			<u-grid :col="4" :border="false">
+				<u-grid-item @click="toOrder">
+					<u-icon name="../../static/iconfont/order01.png" :size="46"/>
+					<view class="grid-text">订单</view>
+				</u-grid-item>
+				<u-grid-item @click="toVerify">
+					<u-icon name="../../static/iconfont/verify.png" :size="46"/>
+					<view class="grid-text">实名认证</view>
+				</u-grid-item>
+				<u-grid-item @click="toAddress">
+					<u-icon name="../../static/iconfont/address.png" :size="46"/>
+					<view class="grid-text">地址管理</view>
+				</u-grid-item>
+				<u-grid-item @click="toSetting">
+					<u-icon name="../../static/iconfont/menu.png" :size="46"/>
+					<view class="grid-text">设置</view>
+				</u-grid-item>
+			</u-grid>
+		</view>
+		
+		
 	
 		<!-- <u-cell-group>
 			<u-cell-item icon="shopping-cart-fill" title="我的订单" @click="toOrder"></u-cell-item> -->
@@ -72,6 +80,11 @@
 			url: '/pages/user/verify'
 		});
 	}
+	const toAddress = () => {
+		uni.navigateTo({
+			url: '/pages/user/address'
+		});
+	}
 	const toOrder = () => {
 		uni.switchTab({
 			url: '/pages/order/index'
@@ -95,14 +108,14 @@
 			color: $u-type-info;
 		}
 	.content-user {
-		border-radius: 30rpx;
-		margin-left: 30rpx;
-		margin-right: 30rpx;
+		// border-radius: 30rpx;
+		// margin-left: 30rpx;
+		// margin-right: 30rpx;
 		padding-left: 40rpx;
-		padding-top: 20rpx;
+		padding-top: 80rpx;
 		padding-bottom: 80rpx;
-
-		background-color: #cccccc;
+		color: #fff;
+		background-color: #8B4513;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -144,4 +157,13 @@
 	// .bottom-card{
 	// 	// transform: translateY(-10%);
 	// }
+	.menu-box{
+		margin: 20rpx;
+		padding: 20rpx;
+		background-color: #fff;
+		border-radius: 10rpx;
+		box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+		// box-shadow: 0rpx 0rpx 10rpx #000;
+	}
 </style>

@@ -145,6 +145,15 @@
             }
 
         }
+        ,{
+            "path" : "pages/user/address",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "black",
@@ -161,14 +170,14 @@
 		"borderStyle": "black",
 		"list": [{
 				"pagePath": "pages/product/product",
-				"iconPath": "static/iconfont/product.png",
-				"selectedIconPath": "static/iconfont/product-activity.png",
+				"iconPath": "static/iconfont/home.png",
+				"selectedIconPath": "static/iconfont/home-activity.png",
 				"text": "商品"
 			},
 			{
 				"pagePath": "pages/order/index",
-				"iconPath": "static/iconfont/product.png",
-				"selectedIconPath": "static/iconfont/product-activity.png",
+				"iconPath": "static/iconfont/order.png",
+				"selectedIconPath": "static/iconfont/order-activity.png",
 				"text": "订单"
 			},
 			{

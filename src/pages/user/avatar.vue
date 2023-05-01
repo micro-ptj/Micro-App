@@ -22,13 +22,13 @@
 				this.avatar = path;
 				// 可以在此上传到服务端
 				uni.uploadFile({
-					url: config.base_url + 'upload-platform',
+					url: config.base_url + '/common/upload',
 					filePath: path,
 					name: 'file',
 					complete: (res) => {
 						uni.setStorage({
 							key: 'avatar',
-							data: JSON.parse(res.data).url,
+							data: JSON.parse(res.data).fileName,
 							success: function () {
 								console.log('success');
 							}

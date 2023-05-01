@@ -1,0 +1,1 @@
+import{_ as a,o as r,c as s,w as e,i as n,b as o}from"./index.d4fd57a9.js";var t=a({},[["render",function(a,t){const d=n;return r(),s(d,null,{default:e((()=>[o(" error! ")])),_:1})}]]);export{t as default};

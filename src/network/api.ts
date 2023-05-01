@@ -166,6 +166,18 @@ export const getOrder = (query:any) => {
 	})
 }
 
+export const getPickup = (query:any) => {
+	return request({
+		url: "/app/order/pickup",
+		method: "POST",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		},
+		data: query
+	})
+}
+
 /*---------------------------------dict---------------------------------*/
 export function getDicts(dictType: string) {
   return request({
@@ -225,5 +237,40 @@ export const orderInfo = (id:string) => {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'Authorization': uni.getStorageSync('token')
 		}
+	})
+}
+
+/*---------------------------------address---------------------------------*/
+export const addressList = () => {
+	return request({
+		url: "/app/address/list",
+		method: "GET",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		}
+	})
+}
+
+export const addressDefault = () => {
+	return request({
+		url: "/app/address/default",
+		method: "GET",
+		header: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': uni.getStorageSync('token')
+		}
+	})
+}
+
+export const addressInsert = (data: any) => {
+	return request({
+		url: "/app/address/insert",
+		method: "POST",
+		header: {
+			'Content-Type': 'application/json',
+			'Authorization': uni.getStorageSync('token')
+		},
+		data: data
 	})
 }

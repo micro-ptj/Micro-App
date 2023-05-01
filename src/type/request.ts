@@ -5,9 +5,10 @@ export interface LoginParam {
 }
 
 export interface RegisterParam {
-    username: string;
+    phone: string;
     password: string;
 	avatar: string;
+	code: string;
 }
 
 export interface BidParam {
